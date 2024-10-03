@@ -14,6 +14,12 @@ const mySqlConfig = {
     database: process.env.DB_NAME, // banco selecionado
 }
 
+console.log('Database configuration:');
+console.log('Host:', process.env.DB_HOST);
+console.log('User:', process.env.DB_USER);
+console.log('Password:', process.env.DB_PASSWORD ? '********' : 'not set');
+console.log('Database:', process.env.DB_NAME);
+
 // instancia para a conexão com SQL Server (Azure Cloud)
 var sqlServerConfig = {
         server: process.env.DB_HOST, // link do servidor cloud

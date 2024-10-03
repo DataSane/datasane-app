@@ -77,9 +77,9 @@ app.use((err, req, res, next) => {
     }
 });
 // ========= ABRINDO SERVIDOR ==========
-const HOST = process.env.SV_HOST || 'localhost';
-const PORT = process.env.SV_PORT || 3000;
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
+const HOST = process.env.SV_HOST;
+const PORT = process.env.SV_PORT;
+const ENVIRONMENT = process.env.NODE_ENV;
 
 try {
     app.listen(PORT, () => {
