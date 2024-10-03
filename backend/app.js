@@ -89,6 +89,3 @@ try {
 } catch (e) {
     console.log(`\x1b[31mErro ao inicializar o servidor\x1b[0m\n${e}`);
 }
-
-var database = require('./src/configs/database/connection');
-console.log(database.execute('SELECT * FROM user LIMIT 1'));
