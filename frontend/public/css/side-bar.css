@@ -18,9 +18,9 @@ body{
 .side-bar{
     width: 220px;
     height: 100%;
-    background-color: #202A3F;
+    background-color: rgba(52, 175, 255, 1);
     position: relative;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.74);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.74);
     position: relative;
     z-index: 2;
 }
