@@ -147,14 +147,51 @@
                 <a href="/monitor">/monitor</a>
             </div>
         </header>
-        <section class="search-container">
+        <!-- <section class="search-container">
             <div class="search-wrapper">
                 <input type="text" placeholder="Pesquisar...">
                 <button><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FFFFFF/search--v1.png" alt="search--v1"/></button>
+            </div>
+        </section> -->
+        <section class="content-container">
+            <div class="grafico">
+                <canvas class="comparativeChart" id="comparativeChart"></canvas>
             </div>
         </section>
     </main>
 </body>
 
 </html>
+<script>
+    var ctx = document.getElementById('comparativeChart').getContext('2d');
+var comparativeChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['População', 'Água', 'Esgoto', 'Coleta de Lixo', 'Chance de Inundação'],
+        datasets: [
+            {
+                label: 'Município 1',
+                backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                data: [35000, 50000, 45000, 30000, 60000], // Substitua pelos valores reais
+            },
+            {
+                label: 'Município 2',
+                backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [20000, 55000, 35000, 40000, 45000], // Substitua pelos valores reais
+            }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 
