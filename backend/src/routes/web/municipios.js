@@ -50,6 +50,22 @@ router.get('/comparativa', async function(req, res) {
     }
 });
 
+router.get('/comparativa/resultados', async function(req, res) {
+    if (req.session.authenticated) {
+
+        res.render('comparativaResultados', {
+            userid: req.session.user.session_userid,
+            isadmin: req.session.user.session_isadmin
+        });
+
+    }else{
+        req.session.hasError = true;
+        req.session.errorMessage = 'Faça login antes de acessar a dashboard!'
+        res.redirect('/');
+    }
+});
+
+
 // router.get('/fazenda/:fazendaId', function(req, res){
 //     if (req.session.authenticated) {
 
