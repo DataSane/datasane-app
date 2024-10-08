@@ -3,7 +3,7 @@
 }
 /* card 1 */
 .summary-card {
-    width: 20% !important;
+    width: 25% !important;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -90,26 +90,6 @@
 .summary-main {
     height: calc(100% - 50px);
     padding: 10px;
-}
-
-/* card 5 */
-.summary-card:nth-child(5)>.summary-footer {
-    background-color: #e68b04;
-
-}
-
-.summary-card:nth-child(5)>.summary-main {
-    background-color: #f89500;
-    color: #FFF;
-}
-
-.summary-card:nth-child(5)>.summary-main>span {
-    font-weight: bolder;
-}
-
-.summary-card:nth-child(5)>.summary-main h1 {
-    font-size: 25px;
-    margin-top: 25px;
 }
 
 .summary-main {
