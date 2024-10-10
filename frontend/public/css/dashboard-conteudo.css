@@ -1,5 +1,4 @@
 .Graficos {
-
     display: flex;
     flex-direction: row;
     margin-left: 5%;
@@ -16,22 +15,66 @@
 
 .AreaGraficoPizza,
 .AreaGraficoPizza2 {
-
     margin-left: 1%;
     display: flex;
     flex-direction: column;
     gap: 10px;
-
 }
 
 .GraficoPizza1,
 .GraficoPizza2,
 .GraficoPizza3,
 .GraficoPizza4 {
-
     width: 250px;
     height: 295px;
     background-color: #ffff;
     border-radius: 16px;
+}
 
+.AreaKpis {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    gap: 30px;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.KPI1,
+.KPI2,
+.KPI3,
+.KPI4 {
+    width: 360px; /* Ajuste a largura conforme necessário */
+    height: 150px; /* Ajuste a altura conforme necessário */
+    background-color: #ffff;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bolaRoxa {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #8D33FF;
+    margin: 20px 30px 0 30px; /* Margens ajustadas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gota, .Lixo, .Inundacao, .Banheiro {
+    height: auto; /* Mantenha a proporção da imagem */
+    max-height: 80%; /* Limita a altura máxima da imagem */
+    max-width: 80%; /* Limita a largura máxima da imagem */
+}
+
+.AreaTexto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente o texto */
+    margin-top: 10%; /* Ajuste a margem conforme necessário */
+    gap: 5px; /* Ajuste o espaço entre os elementos de texto */
+    margin-left: 8%; /* Ajuste o espaço à esquerda */
 }
