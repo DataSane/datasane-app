@@ -20,7 +20,7 @@ body{
     height: 100%;
     background-color: #113768;
     position: relative;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.74);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.74);
     position: relative;
     z-index: 2;
 }
@@ -30,7 +30,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #203751;
+    background-color: #10305a;
 }
 
 .logo-wrapper > img{

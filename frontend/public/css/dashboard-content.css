@@ -1,0 +1,7 @@
+.section-dashboard-content{
+    height: calc(100% - 250px);
+    margin-top: 15px !important;
+    width: 90%;
+    margin: 0 auto;
+    background-color: blue;
+}
