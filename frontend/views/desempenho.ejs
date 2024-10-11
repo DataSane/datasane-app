@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <link rel="shortcut icon" href="/icon/organizacao-_1_.ico">
+    <link rel="shortcut icon" href="/icon/Mask-group.ico">
 <head>
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoySense | Dashboard</title>
+    <title>DataSane | Dashboard</title>
     <!-- chart js lib -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
@@ -12,19 +12,19 @@
 
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
-    <script src="/js/open-monitor-iframe.js" defer></script>
+    <script src="/js/open-analista-iframe.js" defer></script>
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
     <link rel="stylesheet" href="/css/side-bar.css">
     <!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
     <link rel="stylesheet" href="/css/header-main.css">
-    <link rel="stylesheet" href="/css/monitor.css">
+    <link rel="stylesheet" href="/css/analista.css">
 </head>
 <body>
     <aside class="side-bar">
         <div class="logo-wrapper">
-            <img src="/icon/logo-soysense.png"/>
+            <img src="/img/datasane.png"/>
         </div>
         <div class="profile-wrapper">
             <div class="profile-picture">
@@ -155,6 +155,55 @@
                 <button><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FFFFFF/search--v1.png" alt="search--v1"/></button>
             </div>
         </section>
+        <section class="table-container">
+            <div class="main-table-container">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Cargo</th>
+                        <th>Ações</th>
+                    </tr>
+                        <tr>
+                            <td>
+                                teste
+                            </td>
+                            <td>
+                                teste<span class="you">(você)</span>
+                            </td>
+                            <td>
+                                teste
+                            </td>
+                            <td>
+                                Admin
+                            </td>
+                            <td>
+                                <button class="btn-edi">
+                                    <img width="17" height="17" src="https://img.icons8.com/material-outlined/24/FFFFFF/edit--v1.png" alt="edit--v1"/>
+                                </button>
+                                <button class="btn-del">
+                                    <img width="17" height="17" src="https://img.icons8.com/material-outlined/24/FFFFFF/trash--v1.png" alt="trash--v1"/>
+                                </button>
+                            </td>
+                        </tr>
+                    
+
+                </table>
+            </div>
+            <div class="footer-table-container">
+                <p>Gestores registrados: <span>testes</span></p>
+                <button id="openModalAdicionarAnalista">Adicionar +</button>
+            </div>
+        </section>
+        <div id="modalAdicionarAnalista" class="modal">
+            <div class="modal-content">
+                <div class="header-modal">
+                    <span class="close" id="closeAdicionarAnalista">&times;</span>
+                </div>
+                    <iframe src="/analistas/iframe" width="598" height="500"  frameborder="0"></iframe>
+            </div>
+        </div>
     </main>
 </body>
 
