@@ -7,11 +7,12 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .summary-card:nth-child(1)>.summary-footer {
-    background-color: rgb(115, 208, 22);
+    background-color: rgb(117, 184, 232);
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(1)>.summary-main {
-    background-color: rgb(115, 208, 22);
-    color: #fff;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(1)>.summary-main>span {
     font-weight: bolder;
@@ -22,11 +23,12 @@
 }
 /* card 2 */
 .summary-card:nth-child(2)>.summary-footer {
-    background-color: rgb(115, 208, 22);
+    background-color:#C2A385;
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(2)>.summary-main {
-    background-color: rgb(115, 208, 22);
-    color: #fff;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(2)>.summary-main>span {
     font-weight: bolder;
@@ -37,11 +39,12 @@
 }
 /* card 3 */
 .summary-card:nth-child(3)>.summary-footer {
-    background-color: #249224;
+    background-color: #6ee372;
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(3)>.summary-main {
-    background-color: #27a727;
-    color: #ffffff;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(3)>.summary-main>span {
     font-weight: bolder;
@@ -52,11 +55,12 @@
 }
 /* card 4 */
 .summary-card:nth-child(4)>.summary-footer {
-    background-color: #047ecf;
+    background-color:#E8D3A8;
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(4)>.summary-main {
-    background-color: #008ae6;
-    color: #FFF;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 .summary-card:nth-child(4)>.summary-main>span {
     font-weight: bolder;
