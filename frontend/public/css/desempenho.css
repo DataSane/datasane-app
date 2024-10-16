@@ -48,6 +48,35 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-top: 50px;
+}
+.table-container > .Comeco-table-container{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px 0 40px;
+    margin-top: 7px;
+}
+.table-container > .Comeco-table-container > button{
+    height: 40px;
+    width: 120px;
+    background-color: rgba(0, 173, 237, 1);
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+.table-container > .Comeco-table-container > button:hover{
+    background-color: rgba(17, 55, 104, 1);
+}
+.table-container > .Comeco-table-container > button, p{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.table-container > .Comeco-table-container > p > span{
+    color: rgb(28, 212, 28);;
 }
 .table-container > .main-table-container{
     width: 100%;
@@ -63,18 +92,19 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 40px 0 40px;
+    margin-top: 7px;
 }
 .table-container > .footer-table-container > button{
     height: 40px;
     width: 120px;
-    background-color: rgb(28, 212, 28);
-    border-radius: 7px;
+    background-color: rgba(0, 173, 237, 1);
+    border-radius: 20px;
     color: #fff;
     cursor: pointer;
     transition: 0.3s all;
 }
 .table-container > .footer-table-container > button:hover{
-    background-color: rgb(26, 185, 26);
+    background-color: rgba(17, 55, 104, 1);
 }
 .table-container > .footer-table-container > button, p{
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -83,6 +113,8 @@
 .table-container > .footer-table-container > p > span{
     color: rgb(28, 212, 28);;
 }
+
+
 
 .main-table-container::-webkit-scrollbar {
     width: 5px; 
