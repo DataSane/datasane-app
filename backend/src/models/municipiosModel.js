@@ -1,6 +1,6 @@
 var database = require('../configs/database/connection');
 
-async function getMunicipios() {
+async function municipios() {
     console.log('Starting catch Municipios');
 
     var sqlCommand = `
@@ -10,8 +10,10 @@ async function getMunicipios() {
     console.log("Running SQL Command " + sqlCommand);
 
     const resultQuery = await database.execute(sqlCommand);
+    
+    var string = JSON.stringify(resultQuery);
 
-    return resultQuery.rows;
+    return string; 
 }
 
-module.exports = getMunicipios;
+module.exports = {municipios};
