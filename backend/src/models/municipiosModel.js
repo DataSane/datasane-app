@@ -10,10 +10,9 @@ async function municipios() {
     console.log("Running SQL Command " + sqlCommand);
 
     const resultQuery = await database.execute(sqlCommand);
-    
-    var string = JSON.stringify(resultQuery);
+    var resultToString = JSON.stringify(resultQuery);
 
-    return string; 
+    return resultToString; 
 }
 
 module.exports = {municipios};
