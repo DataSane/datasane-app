@@ -37,19 +37,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 row.appendChild(populacaoCell);
 
                 const semLixoCell = document.createElement('td');
-                semLixoCell.textContent = municipio.populacaoSemLixo;
+                semLixoCell.textContent = municipio.populacaoSemLixo + '%';
                 row.appendChild(semLixoCell);
 
                 const semAguaCell = document.createElement('td');
-                semAguaCell.textContent = municipio.populacaoSemAgua;
+                semAguaCell.textContent = municipio.populacaoSemAgua + '%';
                 row.appendChild(semAguaCell);
 
                 const semEsgotoCell = document.createElement('td');
-                semEsgotoCell.textContent = municipio.populacaoSemEsgoto;
+                semEsgotoCell.textContent = municipio.populacaoSemEsgoto + '%';
                 row.appendChild(semEsgotoCell);
 
                 const sujeitoInundacoes = document.createElement('td');
-                sujeitoInundacoes.textContent = municipio.domicilioSujeitoInundacoes;
+                sujeitoInundacoes.textContent = municipio.domicilioSujeitoInundacoes + '%';
                 row.appendChild(sujeitoInundacoes);
 
                 const planoMunicipal =document.createElement('td');
