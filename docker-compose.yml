@@ -12,8 +12,8 @@ services:
       SV_HOST: localhost
       SV_PORT: 3333
       DB_HOST: db
-      DB_USER: appuser
-      DB_PASSWORD: password123
+      DB_USER: root
+      DB_PASSWORD: root123
       DB_NAME: datasane
     depends_on:
       - db
@@ -27,7 +27,6 @@ services:
       MYSQL_DATABASE: datasane
     volumes:
       - db_data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   etl-java-api:
     build:
@@ -37,8 +36,8 @@ services:
       - db
     environment:
       DB_HOST: db
-      DB_USER: appuser
-      DB_PASSWORD: password123
+      DB_USER: root
+      DB_PASSWORD: root123
       DB_NAME: datasane
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
