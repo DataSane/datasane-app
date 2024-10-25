@@ -1,5 +1,5 @@
-# Use uma imagem base do OpenJDK
-FROM openjdk:21-jdk
+# Use uma imagem base do OpenJDK baseada em Debian
+FROM openjdk:21-jdk-slim
 
 # Defina o diretório de trabalho no container
 WORKDIR /app
