@@ -1,5 +1,5 @@
-# Use a imagem oficial do Node.js como base
-FROM node:latest
+# Use uma versão específica do Node.js como base
+FROM node:14
 
 # Defina o diretório de trabalho no container
 WORKDIR /app
@@ -7,11 +7,12 @@ WORKDIR /app
 # Instale o cliente MySQL
 RUN apt-get update && apt-get install -y default-mysql-client
 
-# Copie o package.json e package-lock.json para o diretório de trabalho
-COPY package*.json ./
+# Configure o registro do npm (opcional, se você estiver tendo problemas com o registro padrão)
+RUN npm config set registry https://registry.npmjs.org/
 
-# Instale as dependências
-RUN npm install
+# Limpe o cache do npm e instale as dependências com saída detalhada
+COPY package*.json ./
+RUN npm cache clean --force && npm install --verbose
 
 # Copie o código do projeto para o diretório de trabalho
 COPY . .
