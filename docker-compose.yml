@@ -27,6 +27,7 @@ services:
       MYSQL_DATABASE: datasane
     volumes:
       - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   etl-java-api:
     build:
