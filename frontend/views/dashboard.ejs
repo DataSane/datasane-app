@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <link rel="shortcut icon" href="/icon/organizacao-_1_.ico">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,10 @@
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/dashboard-content.css">
     <link rel="stylesheet" href="/css/header-main.css">
+    <!--icones-->
+    <link rel="stylesheet" href="https://icons8.com.br/icons/set/banheiro">
 </head>
+
 <body>
     <aside class="side-bar">
         <div class="logo-wrapper">
@@ -161,33 +165,69 @@
         <section class="summary-container">
             <div class="summary-card">
                 <div class="summary-main">
-                    <span>Situação: Critico</span>
+                    <div class="flag">
+                        <span class="border-left red">São Caetano do Sul</span>
+                        <span class="border-left blue">Média Regional - Suldeste</span>
+                    </div>
+                    <div class="params">
+                        <h1 class="params-red">22%</h1>
+                        <span class="separator">|</span>
+                        <h1 class="params-blue">50%</h1>
+                    </div>
                 </div>
                 <div class="summary-footer ">
+                    <img src="https://img.icons8.com/?size=40&id=UioBM7GOGZgT&format=png&color=000000">
                     <h1>Água</h1>
                 </div>
             </div>
-        <div class="summary-card">
-            <div class="summary-main">
-                <span>Situação: Critico</span>
-            </div>
-            <div class="summary-footer ">
-                <h1>Esgoto</h1>
-            </div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-main">
-                <span>Situação: Critico</span>
-            </div>
-            <div class="summary-footer ">
-                <h1>Coleta de Lixo</h1>
-            </div>
-        </div>
             <div class="summary-card">
                 <div class="summary-main">
-                    <span>Situação: Critico</span>
+                    <div class="flag">
+                        <span class="border-left red">São Caetano do Sul</span>
+                        <span class="border-left blue">Média Regional - Suldeste</span>
+                    </div>
+                    <div class="params">
+                        <h1 class="params-red">22%</h1>
+                        <span class="separator">|</span>
+                        <h1 class="params-blue">50%</h1>
+                    </div>
                 </div>
                 <div class="summary-footer ">
+                    <img  src="https://img.icons8.com/?size=40&id=5qFBnctChIMS&format=png&color=000000" >
+                    <h1>Esgoto</h1>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-main">
+                    <div class="flag">
+                        <span class="border-left red">São Caetano do Sul</span>
+                        <span class="border-left blue">Média Regional - Suldeste</span>
+                    </div>
+                    <div class="params">
+                        <h1 class="params-red">22%</h1>
+                        <span class="separator">|</span>
+                        <h1 class="params-blue">50%</h1>
+                    </div>
+                </div>
+                <div class="summary-footer ">
+                   <img  src="//img.icons8.com/?size=40&id=2965&format=png&color=000000">
+                    <h1>Coleta de Lixo</h1>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-main">
+                    <div class="flag">
+                        <span class="border-left red">São Caetano do Sul</span>
+                        <span class="border-left blue">Média Regional - Suldeste</span>
+                    </div>
+                    <div class="params">
+                        <h1 class="params-red">22%</h1>
+                        <span class="separator">|</span>
+                        <h1 class="params-blue">50%</h1>
+                    </div>
+                </div>
+                <div class="summary-footer ">
+                    <img class="img-inundação" src="https://img.icons8.com/?size=45&id=iCh44TmjfPwv&format=png&color=000000">
                     <h1>Inundação</h1>
                 </div>
             </div>
@@ -200,17 +240,21 @@
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza1">
                         <canvas id="graficoPizza1"></canvas>
+                        <p>Distribuição de Municípios por Abastecimento de Água</p>
                     </div>
                     <div class="GraficoPizza2">
                         <canvas id="graficoPizza2"></canvas>
+                        <p>Distribuição de Municípios por Abastecimento de Esgoto</p>
                     </div>
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza3">
                         <canvas id="graficoPizza3"></canvas>
+                        <p>Distribuição de Municípios por Abastecimento de Coleta de Lixo</p>
                     </div>
                     <div class="GraficoPizza4">
                         <canvas id="graficoPizza4"></canvas>
+                        <p>Distribuição de Municípios por Abastecimento de Inundação</p>
                     </div>
                 </div>
             </div>
@@ -279,4 +323,5 @@
         new Chart(ctxPizza4, { type: 'pie', data: dataPizza, options: { responsive: true } });
     </script>
 </body>
+
 </html>

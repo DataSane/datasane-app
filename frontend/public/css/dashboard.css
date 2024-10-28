@@ -66,8 +66,8 @@
     font-weight: bolder;
 }
 .summary-card:nth-child(4)>.summary-main h1 {
-    font-size: 25px;
-    margin-top: 25px;
+    font-size: 40px;
+    margin-top: 15px;
 }
 .summary-main {
     height: calc(100% - 50px);
@@ -223,4 +223,29 @@ tr{
 }
 tbody tr:nth-child(even) {
     background-color: #e4e4e4;
+}
+
+.border-left{
+    border-left: solid 10px;
+    padding-left: 5px;
+    
+
+}
+
+.red{
+    border-color: red;
+}
+
+.blue{
+    border-color: blue;
+}
+
+.flag{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.params{
+    display: flex;
 }
