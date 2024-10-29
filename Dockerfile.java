@@ -17,4 +17,4 @@ COPY wait-for-mysql-connection.sh .
 RUN chmod +x /app/wait-for-mysql-connection.sh
 
 # Comando para rodar o aplicativo, aguardando o MySQL estar pronto
-CMD ["sh", "-c", "/app/wait-for-mysql-connection.sh db && java -jar etl-java-app.jar && tail -f /dev/null"]
+CMD ["sh", "/app/wait-for-mysql-connection.sh", "db", "java", "-jar", "etl-java-app.jar"]
