@@ -14,6 +14,7 @@
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
     <script src="/js/open-analista-iframe.js" defer></script>
+    <script src="/js/municipios.js" defer></script>
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
@@ -169,225 +170,26 @@
         </section>-->
         <section class="table-container">
             <div class="Comeco-table-container">
-                <p>Titulo</p>
+                <p>Saneamento Básico dos Municipios de São Paulo</p>
                 <button id="openModalFiltro">Filtro</button>
             </div>
             <div class="main-table-container">
                 <table>
-                    <tr>
-                        <th>Coluna 1</th>
-                        <th>Coluna 2</th>
-                        <th>Coluna 3</th>
-                        <th>Coluna 4</th>
-                        <th>Coluna 5</th>
-                        <th>Coluna 6</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Nome
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                        <td>
-                            Info
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>População</th>
+                            <th>População Sem Coleta de Lixo</th>
+                            <th>População Sem Água</th>
+                            <th>População Sem Esgoto</th>
+                            <th>Domicilio Sujeito a Inundações</th>
+                            <th>Plano Municipal</th>
+                        </tr>
+                    </thead>
 
-
+                    <tbody id="table-body">
+                        
+                    </tbody>
                 </table>
             </div>
             <div class="footer-table-container">
