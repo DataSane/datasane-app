@@ -241,6 +241,9 @@
                         <label >Categoria</label>
                         <select>
                             <option value="">Abastecimento de água</option>
+                            <option value="">Tratamento de Esgoto</option>
+                            <option value="">Coleta de Lixo</option>
+                            <option value="">Risco a Inundação</option>
                         </select>
                     </div>
                     <div class="filter-content">
@@ -260,13 +263,13 @@
                     </div>
                     <div class="GraficoPizza2">
                         <canvas id="graficoPizza2"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Esgoto</p>
+                        <p>Distribuição de Municípios por Abastecimento de Coleta de Lixo</p>
                     </div>
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza3">
                         <canvas id="graficoPizza3"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Coleta de Lixo</p>
+                        <p>Distribuição de Municípios por Abastecimento de Esgoto</p>
                     </div>
                     <div class="GraficoPizza4">
                         <canvas id="graficoPizza4"></canvas>
@@ -277,66 +280,127 @@
         </div>
     </main>
     <script>
+const labels = ['Diadema', 'Santo André', 'Piracicaba', 'São Caetano do Sul', 'São Paulo'];
+const data = {
+    labels: labels,
+    datasets: [{
+        axis: 'y',
+        label: '',
+        data: [70, 100, 20, 15, 40],
+        fill: false,
+        backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)', 'rgb(77, 171, 208)', 'rgb(144, 202, 249)', 'rgb(173, 216, 230)'],
+        borderWidth: 1
+    }]
+};
 
-        const labels = ['Diadema', 'Santo André', 'Piracicaba','São Caetano do Sul','São Paulo'];
-        const data = {
-            labels: labels,
-            datasets: [{
-                axis: 'y',
-                label: '',
-                data: [70, 100, 20,15,40,],
-                fill: false,
-                backgroundColor: ['rgba(52, 175, 255, 1)', 'rgba(141, 51, 255, 1)', 'rgba(103, 226, 205, 1)'],
-                borderWidth: 1
-            }]
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document.getElementById('grafico1').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
+document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('grafico1').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif', // Fonte personalizada no eixo Y
+                            size: 16
                         }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    elements: {
-                        bar: {
-                            borderRadius: 4
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif', // Fonte personalizada no eixo X
+                            size: 16
                         }
                     }
                 }
-            });
-        });
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                    labels: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif' // Fonte personalizada na legenda
+                        }
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 4
+                }
+            }
+        }
+    });
+});
 
-        const labelsPizza = ['Média', 'Alta', 'Baixa'];
-        const dataPizza = {
-            labels: labelsPizza,
-            datasets: [{
-                data: [30, 40, 30],
-                backgroundColor: ['rgba(52, 175, 255, 1)', 'rgba(141, 51, 255, 1)', 'rgba(103, 226, 205, 1)']
-            }]
-        };
+const labelsPizza = ['Média', 'Alta', 'Baixa'];
 
-        const ctxPizza1 = document.getElementById('graficoPizza1').getContext('2d');
-        const ctxPizza2 = document.getElementById('graficoPizza2').getContext('2d');
-        const ctxPizza3 = document.getElementById('graficoPizza3').getContext('2d');
-        const ctxPizza4 = document.getElementById('graficoPizza4').getContext('2d');
+// Defina diferentes conjuntos de dados para cada gráfico com cores exclusivas
+const dataPizza1 = {
+    labels: labelsPizza,
+    datasets: [{
+        data: [30, 40, 30],
+        backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)', 'rgb(77, 171, 208)']
+    }]
+};
 
-        new Chart(ctxPizza1, { type: 'pie', data: dataPizza, options: { responsive: true } });
-        new Chart(ctxPizza2, { type: 'pie', data: dataPizza, options: { responsive: true } });
-        new Chart(ctxPizza3, { type: 'pie', data: dataPizza, options: { responsive: true } });
-        new Chart(ctxPizza4, { type: 'pie', data: dataPizza, options: { responsive: true } });
+const dataPizza2 = {
+    labels: labelsPizza,
+    datasets: [{
+        data: [30, 40, 30],
+        backgroundColor: ['rgb(50, 150, 50)', 'rgb(90, 200, 90)', 'rgb(150, 255, 150)']
+    }]
+};
+
+const dataPizza3 = {
+    labels: labelsPizza,
+    datasets: [{
+        data: [30, 40, 30],
+        backgroundColor: ['rgb(140, 110, 85) ', 'rgb(174, 140, 112) ', 'rgb(220, 190, 160)']
+    }]
+};
+
+const dataPizza4 = {
+    labels: labelsPizza,
+    datasets: [{
+        data: [30, 40, 30],
+        backgroundColor: ['rgb(255, 140, 0)', 'rgb(255, 180, 50)', 'rgb(255, 220, 140)']
+    }]
+};
+
+// Função para criar gráficos de pizza com a fonte personalizada
+function createPieChart(ctx, data) {
+    new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif' // Fonte personalizada na legenda do gráfico de pizza
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Crie os gráficos de pizza com conjuntos de dados diferentes
+createPieChart(document.getElementById('graficoPizza1').getContext('2d'), dataPizza1);
+createPieChart(document.getElementById('graficoPizza2').getContext('2d'), dataPizza2);
+createPieChart(document.getElementById('graficoPizza3').getContext('2d'), dataPizza3);
+createPieChart(document.getElementById('graficoPizza4').getContext('2d'), dataPizza4);
+
     </script>
 </body>
 
