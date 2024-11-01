@@ -40,7 +40,7 @@
     position: relative;
     top: 50px;
     width: 90%;
-    height: 430px;
+    height: 100%;
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
@@ -50,6 +50,7 @@
     overflow: hidden;
     margin-top: 50px;
 }
+
 .table-container > .Comeco-table-container{
     width: 100%;
     height: 60px;
@@ -80,11 +81,12 @@
 }
 .table-container > .main-table-container{
     width: 100%;
-    height: calc(100% - 60px);
+    height: 75%;
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgba(0, 0, 0, 0.151);
     overflow: auto;
 }
+
 .table-container > .footer-table-container{
     width: 100%;
     height: 60px;

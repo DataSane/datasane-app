@@ -162,7 +162,7 @@ body{
     background-color: #224185;
 }
 .accordion-submenu{
-    background-color: yellow;
+    /* background-color: yellow; */
     display: none;
     list-style: none;
     height: auto;
