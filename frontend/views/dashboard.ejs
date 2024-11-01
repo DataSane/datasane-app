@@ -235,6 +235,22 @@
         <div class="section-dashboard-content">
             <div class="Graficos">
                 <div class="Grafico1">
+                <p class="title-grafico1">Índice de Saneamento: Comparativo Municipal de SP</p>
+                <div class="filter-container">
+                    <div class="filter-content">
+                        <label >Categoria</label>
+                        <select>
+                            <option value="">Abastecimento de água</option>
+                        </select>
+                    </div>
+                    <div class="filter-content">
+                        <label >População</label>
+                        <select>
+                            <option value="">0 a 500mil</option>
+                        </select>
+                    </div>
+
+                </div>
                     <canvas id="grafico1"></canvas>
                 </div>
                 <div class="AreaGraficoPizza">
@@ -262,13 +278,13 @@
     </main>
     <script>
 
-        const labels = ['A', 'B', 'C'];
+        const labels = ['Diadema', 'Santo André', 'Piracicaba','São Caetano do Sul','São Paulo'];
         const data = {
             labels: labels,
             datasets: [{
                 axis: 'y',
                 label: '',
-                data: [70, 100, 20],
+                data: [70, 100, 20,15,40,],
                 fill: false,
                 backgroundColor: ['rgba(52, 175, 255, 1)', 'rgba(141, 51, 255, 1)', 'rgba(103, 226, 205, 1)'],
                 borderWidth: 1
