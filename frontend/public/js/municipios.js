@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const url = 'http://localhost:3333/api/municipios';
+    const actualIP = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+    const municipiosEndpoint = '/api/municipios'
+    
+    const url = `${actualIP}${municipiosEndpoint}`;
 
     function fetchMunicipios() {
         return fetch(url)
