@@ -1,0 +1,74 @@
+.modal-container{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.219);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'sans-serif';
+    position: absolute;
+    z-index: 5;
+}
+
+.visible{
+    display: flex;
+}
+
+.close-icon{
+    display: flex;
+    justify-content: end;
+}
+
+.close-icon>i{
+    cursor: pointer;
+}
+
+.modal-content{
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.form-alerta{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-pesquisa{
+    position: relative;
+}
+
+.input-pesquisa>i{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+
+.input-pesquisa>input,.form-alerta>textarea{
+    padding: 10px 5px;
+    width: 100%;
+    border: 1px solid #d1d1d1;
+}
+
+.form-alerta>p{
+    margin-top: 15px;
+}
+
+.btn-form-alerta{
+    padding: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.confirm{
+    margin-top: 25px;
+    background-color: #34AFFF;
+    color: #fff;
+}
+
+.confirm:hover{
+    background-color: #309ee7;
+}

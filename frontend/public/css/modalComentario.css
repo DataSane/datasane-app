@@ -1,0 +1,90 @@
+.modal-container{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.219);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'sans-serif';
+    position: absolute;
+    z-index: 5;
+    font-family: 'Poppins';
+}
+
+.visible{
+    display: flex;
+}
+
+.close-icon{
+    display: flex;
+    justify-content: end;
+}
+
+.close-icon>i{
+    cursor: pointer;
+}
+
+.modal-content-coment{
+    background-color: #fff;
+    width:90%;
+    height:90%;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.header-comentario{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.header-title>p{
+    font-size: 12px;
+}
+
+.comentario-container{
+    background-color: #e2e2e2;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.comentario-container>p{
+    margin-top: 10px;
+}
+
+.form-enviar-comentario{
+    display: flex;
+    position: absolute;
+    gap: 5px;
+    bottom: 20px;
+    right: 40px;
+    left: 40px;
+}
+
+.form-enviar-comentario>input,.form-enviar-comentario>button{
+    padding: 20px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-enviar-comentario>input{
+    flex: 5;
+    background-color: #e2e2e2;
+}
+
+.form-enviar-comentario>button{
+    flex: 0.5;
+    background-color: #34AFFF;
+    color: #fff;
+    cursor: pointer;
+}
