@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const actualIP = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
-    const municipiosEndpoint = '/api/municipios'
+    const municipiosEndpoint = '/api/municipios';
     
     const url = `${actualIP}${municipiosEndpoint}`;
 
