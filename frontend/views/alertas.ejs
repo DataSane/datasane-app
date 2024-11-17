@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/css/alertas.css">
     <link rel="stylesheet" href="/css/modalAlerta.css">
     <link rel="stylesheet" href="/css/modalComentario.css">
+    <link rel="stylesheet" href="/css/modalDelete.css">
 </head>
 
 <body>
@@ -191,8 +192,11 @@
                         <div id="buttonEditAlert" class="alert-button edit">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </div>
-                        <div id="buttonComentariosAlert" class="alert-button delete">
+                        <div id="buttonComentariosAlert" class="alert-button chat">
                             <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div id="buttonDelete" class="alert-button delete">
+                            <i class="fa-solid fa-trash"></i>
                         </div>
                     </div>
 
@@ -263,10 +267,25 @@
                 </div>
             </div>
         </main>
+
+        <!-- MODAL DELETE -->
+    <main id="modalDelete" class="modal-container align-top">
+        <div class="modal-content align-top">
+            <div class="close-icon">
+                <i class="fa-solid fa-x" id="closeButton"></i>
+            </div>
+            <h2>Deseja mesmo apagar este alerta?</h2>
+            <div class="buttons-container">
+                <button id="buttonCancel" class="btn-container-style cancel">Cancelar</button>
+                <button class="btn-container-style delete-button">Apagar</button>
+            </div>
+        </div>
+    </main>
 </body>
 
 <script src="https://kit.fontawesome.com/d94da5d75d.js" crossorigin="anonymous"></script>
 <script src="/js/modal-comentario.js"></script>
+<script src="/js/modal-delete.js"></script>
 <script src="/js/modal-alerta.js"></script>
 <script src="/js/alertas.js"></script>
 
