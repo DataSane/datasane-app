@@ -15,12 +15,20 @@
     <script src="/js/side-bar.js" defer></script>
     <script src="/js/open-analista-iframe.js" defer></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
     <link rel="stylesheet" href="/css/side-bar.css">
     <!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
     <link rel="stylesheet" href="/css/header-main.css">
     <link rel="stylesheet" href="/css/analista.css">
+    <link rel="stylesheet" href="/css/modalDelete.css">
+    
 </head>
 
 <body>
@@ -194,12 +202,12 @@
                             Admin
                         </td>
                         <td>
-                            <button class="btn-edi">
+                            <button id="openModalEditarAnalista" class="btn-edi">
                                 <img width="17" height="17"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/edit--v1.png"
                                     alt="edit--v1" />
                             </button>
-                            <button class="btn-del">
+                            <button id="buttonDelete" class="btn-del">
                                 <img width="17" height="17"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/trash--v1.png"
                                     alt="trash--v1" />
@@ -223,7 +231,25 @@
                 <iframe src="/analistas/iframe" width="598" height="500" frameborder="0"></iframe>
             </div>
         </div>
+
+    </main>
+
+    <!-- MODAL DELETE -->
+    <main id="modalDelete" class="modal-container align-top">
+        <div class="modal-content align-top">
+            <div class="close-icon">
+                <i class="fa-solid fa-x" id="closeButton"></i>
+            </div>
+            <h2>Deseja mesmo apagar este usuário?</h2>
+            <div class="buttons-container">
+                <button id="buttonCancel" class="btn-container-style cancel">Cancelar</button>
+                <button class="btn-container-style delete-button">Apagar</button>
+            </div>
+        </div>
     </main>
 </body>
 
 </html>
+
+<script src="https://kit.fontawesome.com/d94da5d75d.js" crossorigin="anonymous"></script>
+<script src="/js/modal-delete.js"></script>
