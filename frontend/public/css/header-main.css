@@ -23,7 +23,12 @@
     font-size: 20px;
     color: #FFF;
 }
-.inner-header a{
+
+.inner-header>h1>a{
+    text-decoration: none;
+    color: #FFF;
+}
+.inner-header>a{
     margin-top: -80px;
     cursor: pointer;
     text-decoration: none;
@@ -70,106 +75,4 @@
     margin-top: 50px;
 }
 
-.select-municipio{
-   
-    width: 90%;
-    gap: 30px;
-    display: flex;
-    flex-direction: column;
-}
 
-.box-select{
-    margin-top: 200px;
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    justify-content: center;
-    align-items: center;
-}
-
-.select-card{
-    height: 55%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.input_municipio{
-    width: 300px;
-    height: 45px;
-    border-radius: 10px;
-    -webkit-box-shadow: 2px 5px 8px 2px rgba(0,0,0,0.32);
-    background-color: rgba(230, 230, 230, 1);
-    border: none;
-    display: flex;
-    padding-left: 10px;
-
-}
-
-.titulo-municipio{
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    width: 350px;
-    text-align: center  ;
-    font-size: 40px;
-}
-
-.box-benchmark{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-benchmark{
-    width: 400px;
-    height: 50px;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: rgba(52, 175, 255, 1);
-    color: rgb(255, 255, 255);
-    font-family: "Poppins", sans-serif;
-    font-size: 30px;
-    text-align: center;
-    -webkit-box-shadow: 2px 5px 8px 2px rgba(0,0,0,0.32);
-    transition: 0.4s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-
-
-.input-container{
-    position: relative;
-}
-
-.icon-input{
-    top: 13px;
-    right: 0;
-    width: 40px; 
-    position: absolute;
-}
-
-
-.btn-benchmark:hover{
-    transform: scale(1.1);
-    transition: 0.4s;
-    background-color: rgb(39, 126, 184);
-}
-
-.grafico{
-    width: 80%;
-    height: 80%;
-}
-
-.comparativeChart{
-    width: 100%;
-    height: 100%;
-}
