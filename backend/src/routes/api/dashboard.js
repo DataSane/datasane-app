@@ -3,8 +3,8 @@ const router = express.Router();
 const dashboardController = require('../../controllers/dashboardController');
 
 router.get('/', (req, res) => {
-    var municipiosMaisCriticoGeral = dashboardController.getMunicipioMaisCritico(req, res, 1);
-    var municipiosMaisCriticoPequeno = dashboardController.getMunicipioMaisCritico(req, res, 2);
+    var municipiosMaisCriticoGeral = dashboardController.getMunicipioMaisCritico(req, res, "grande", "decrescent");
+    var municipiosMaisCriticoPequeno = dashboardController.getMunicipioMaisCritico(req, res, "pequeno", "crescent");
 
     res.json(JSON.parse(municipiosMaisCriticoGeral, municipiosMaisCriticoPequeno));
 })
