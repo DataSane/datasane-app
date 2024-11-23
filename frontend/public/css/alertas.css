@@ -47,8 +47,12 @@
     background-color: #FDAF1C;
 }
 
-.delete{
+.chat{
     background-color: #34AFFF;
+}
+
+.delete{
+    background-color: #FF3333;
 }
 
 

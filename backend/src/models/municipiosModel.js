@@ -1,18 +1,19 @@
 var database = require('../configs/database/connection');
 
 async function municipios() {
-    console.log('Starting catch municipio');
+    console.log('Starting catch Municipio');
+
 
     var sqlCommand = `
         SELECT * FROM municipio;
     `;
-    
+
     console.log("Running SQL Command " + sqlCommand);
 
     const resultQuery = await database.execute(sqlCommand);
     var resultToString = JSON.stringify(resultQuery);
 
-    return resultToString; 
+    return resultToString;
 }
 
 async function findMunicipioById(id){
