@@ -1,10 +1,23 @@
 var database = require('../configs/database/connection');
 
-function municipioMaisCritico(porteMunicipio, ordemLista) {
-    console.log('Starting catch the most critical Municipio');
+function municipioMaisCritico(categoriaSaneamento, porteMunicipio, ordemLista, qtdMunicipios) {
+    console.log('Starting catch the most critical Municipio(s)');
 
-    ordemLista = ordemLista == "decrescent" ? "DESC" : "";
 
+    let atributoMunicipio;
+    let atributoTipoMunicipio; 
+
+    if (categoriaSaneamento == "semLixo") {
+        atributoMunicipio = "populacaoSemLixo";
+        atributoTipoMunicipio = "parametroSemColetaDeLixo";
+    } else if (categoriaSaneamento == "semAgua") {
+        atributoMunicipio = "populacaoSemAgua";
+        atributoTipoMunicipio = "parametroSemAgua";
+    } else if (categoriaSaneamento == "semEsgoto") {
+        atributoMunicipio = "populacaoSemEsgoto";
+        atributoTipoMunicipio = "parametroSemEsgoto";
+    }
+    
     if (porteMunicipio == "geral") {
         porteMunicipio = 1;
     } else if (porteMunicipio == "pequeno") {
@@ -14,13 +27,15 @@ function municipioMaisCritico(porteMunicipio, ordemLista) {
     } else if (porteMunicipio == "grande") {
         porteMunicipio = 4;
     }
-
+    
+    ordemLista = ordemLista == "decrescent" ? "DESC" : "";
+    
     var sqlCommand = `
         SELECT m.*,
-        (m.populacaoSemLixo / t.parametroSemColetaDeLixo) as razao
+        (m.${atributoMunicipio} / t.${atributoTipoMunicipio}) as razao
         FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
         ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} ORDER BY razao ${ordemLista}
-        LIMIT 1;
+        LIMIT ${qtdMunicipios};
     `;
 
     console.log(sqlCommand);
