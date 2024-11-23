@@ -10,4 +10,8 @@ async function getMunicipios(req, res) {
     }
 }
 
-module.exports = { getMunicipios };
+async function getMunicipioById(id){
+    const municipio = await municipiosModel.findMunicipioById(id);
+    return municipio;
+}
+module.exports = { getMunicipios, getMunicipioById };
