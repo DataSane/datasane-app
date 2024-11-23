@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <link rel="shortcut icon" href="/icon/Mask-group.ico">
+<link rel="shortcut icon" href="/icon/Mask-group.ico">
 
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,9 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
     <!-- <script src="/js/graficos-simulativo-dashboard.js" defer></script> -->
@@ -125,7 +128,8 @@
                 </li>
                 <li class="nav-normal-item">
                     <a href="/alertas">
-                        <img width="18" height="18" src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png" alt="box-important--v1"/>
+                        <img width="18" height="18" src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png"
+                            alt="box-important--v1" />
                         &nbsp;Alertas
                     </a>
                 </li>
@@ -168,220 +172,219 @@
                 <a href="#">/dashboard</a>
             </div>
         </header>
-        <section class="summary-container">
-            <div class="summary-card">
-                <div class="summary-main">
-                    <div class="flag">
-                        <span class="border-left red">São Caetano do Sul</span>
-                        <span class="border-left blue">Média Regional - Suldeste</span>
-                    </div>
-                    <div class="params">
-                        <h1 class="params-red">22%</h1>
-                        <span class="separator">|</span>
-                        <h1 class="params-blue">50%</h1>
-                    </div>
-                </div>
-                <div class="summary-footer ">
-                    <img src="https://img.icons8.com/?size=40&id=UioBM7GOGZgT&format=png&color=000000">
-                    <h1>Água</h1>
-                </div>
-            </div>
-            <div class="summary-card">
-                <div class="summary-main">
-                    <div class="flag">
-                        <span class="border-left red">São Caetano do Sul</span>
-                        <span class="border-left blue">Média Regional - Suldeste</span>
-                    </div>
-                    <div class="params">
-                        <h1 class="params-red">22%</h1>
-                        <span class="separator">|</span>
-                        <h1 class="params-blue">50%</h1>
-                    </div>
-                </div>
-                <div class="summary-footer ">
-                    <img  src="https://img.icons8.com/?size=40&id=5qFBnctChIMS&format=png&color=000000" >
-                    <h1>Esgoto</h1>
-                </div>
-            </div>
-            <div class="summary-card">
-                <div class="summary-main">
-                    <div class="flag">
-                        <span class="border-left red">São Caetano do Sul</span>
-                        <span class="border-left blue">Média Regional - Suldeste</span>
-                    </div>
-                    <div class="params">
-                        <h1 class="params-red">22%</h1>
-                        <span class="separator">|</span>
-                        <h1 class="params-blue">50%</h1>
-                    </div>
-                </div>
-                <div class="summary-footer ">
-                   <img  src="//img.icons8.com/?size=40&id=2965&format=png&color=000000">
-                    <h1>Coleta de Lixo</h1>
-                </div>
-            </div>
-            <div class="summary-card">
-                <div class="summary-main">
-                    <div class="flag">
-                        <span class="border-left red">São Caetano do Sul</span>
-                        <span class="border-left blue">Média Regional - Suldeste</span>
-                    </div>
-                    <div class="params">
-                        <h1 class="params-red">22%</h1>
-                        <span class="separator">|</span>
-                        <h1 class="params-blue">50%</h1>
-                    </div>
-                </div>
-                <div class="summary-footer ">
-                    <img class="img-inundação" src="https://img.icons8.com/?size=45&id=iCh44TmjfPwv&format=png&color=000000">
-                    <h1>Inundação</h1>
-                </div>
-            </div>
-        </section>
         <div class="section-dashboard-content">
             <div class="Graficos">
                 <div class="Grafico1">
-                <p class="title-grafico1">Índice de Saneamento: Comparativo Municipal de SP</p>
-                <div class="filter-container">
-                    <div class="filter-content">
-                        <label >Categoria</label>
-                        <select>
-                            <option value="">Abastecimento de água</option>
-                            <option value="">Tratamento de Esgoto</option>
-                            <option value="">Coleta de Lixo</option>
-                            <option value="">Risco a Inundação</option>
-                        </select>
-                    </div>
-                    <div class="filter-content">
-                        <label >População</label>
-                        <select>
-                            <option value="">0 a 500mil</option>
-                        </select>
-                    </div>
+                    <p class="title-grafico1">Índice de Saneamento: Comparativo Municipal de SP</p>
+                    <div class="filter-container">
+                        <div class="filter-content">
+                            <label>Categoria</label>
+                            <select>
+                                <option value="">Abastecimento de água</option>
+                                <option value="">Tratamento de Esgoto</option>
+                                <option value="">Coleta de Lixo</option>
+                                <option value="">Risco a Inundação</option>
+                            </select>
+                        </div>
+                        <div class="filter-content">
+                            <label>População</label>
+                            <select>
+                                <option value="">0 a 500mil</option>
+                                <option value="">500mil a 1milhão</option>
+                            </select>
+                        </div>
+                        <div class="filter-content">
+                            <label>Ordenar por</label>
+                            <select>
+                                <option value="">Menos afetado</option>
+                                <option value="">Mais afetado</option>
+                            </select>
+                        </div>
 
-                </div>
+                    </div>
                     <canvas id="grafico1"></canvas>
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza1">
+                        <p>Distribuição de múnicipios por cobertura de Abastecimento de água</p>
                         <canvas id="graficoPizza1"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Água</p>
                     </div>
                     <div class="GraficoPizza2">
+                        <p>Distribuição de múnicipios por cobertura de Tratamento de esgoto</p>
                         <canvas id="graficoPizza2"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Coleta de Lixo</p>
                     </div>
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza3">
+                        <p>Distribuição de múnicipios por cobertura de Coleta de lixo</p>
                         <canvas id="graficoPizza3"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Esgoto</p>
                     </div>
                     <div class="GraficoPizza4">
+                        <p>Distribuição de múnicipios por Chance de inundação</p>
                         <canvas id="graficoPizza4"></canvas>
-                        <p>Distribuição de Municípios por Abastecimento de Inundação</p>
                     </div>
                 </div>
             </div>
+            <div class="grafico-linha-container">
+                <p class="title-grafico1">Cobertura de saneamento básico no Sudeste do Brasil nos últimos 4 anos</p>
+                <canvas id="lineGrafico"></canvas>
+            </div>
+
         </div>
     </main>
     <script>
-const labels = ['Diadema', 'Santo André', 'Piracicaba', 'São Caetano do Sul', 'São Paulo'];
-const data = {
-    labels: labels,
-    datasets: [{
-        axis: 'y',
-        label: '',
-        data: [70, 100, 20, 15, 40],
-        fill: false,
-        backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)', 'rgb(77, 171, 208)', 'rgb(144, 202, 249)', 'rgb(173, 216, 230)'],
-        borderWidth: 1
-    }]
-};
+        const labels = ['Diadema', 'Santo André', 'Piracicaba', 'São Caetano do Sul', 'São Paulo'];
+        const limite = 50; // Valor da linha limite
+        const valores = [70, 100, 20, 15, 40]; // Valores das barras
 
-document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('grafico1').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif', // Fonte personalizada no eixo Y
-                            size: 16
+        // Define as cores dinamicamente
+        const cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)'); // Verde se passar, vermelho se não passar
+        
+        const data = {
+            labels: labels,
+            datasets: [{
+                axis: 'y',
+                label: 'Cobertura município',
+                data: [70, 100, 20, 15, 40],
+                fill: false,
+                backgroundColor: cores,
+                borderWidth: 1
+            }]
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const ctx = document.getElementById('grafico1').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Município'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat, Arial, Helvetica, sans-serif',
+                                    size: 14
+                                }
+                            }
+                        },
+                        x: {
+                            beginAtZero: true,
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Porcentagem (%)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Montserrat, Arial, Helvetica, sans-serif',
+                                    size: 14
+                                }
+                            }
                         }
-                    }
-                },
-                x: {
-                    ticks: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif', // Fonte personalizada no eixo X
-                            size: 16
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            display: true,
+                            labels: {
+                                generateLabels: function (chart) {
+                                    return [
+                                        {
+                                            text: 'Abaixo do limite',
+                                            fillStyle: 'rgb(241, 57, 57)',
+                                            strokeStyle: 'rgb(241, 57, 57)',
+                                            lineWidth: 2
+                                        },
+                                        {
+                                            text: 'Acima do limite',
+                                            fillStyle: 'rgb(6, 204, 57)',
+                                            strokeStyle: 'rgb(6, 204, 57)',
+                                            lineWidth: 2
+                                        },
+                                        {
+                                            text: 'Meta Sinis',
+                                            fillStyle: 'rgb(255, 106, 0)',
+                                            strokeStyle: 'rgb(255, 106, 0)',
+                                            lineWidth: 2
+                                        }
+                                ];
+                        }}
+                        },
+                        annotation: {
+                            annotations: {
+                                linhaLimite: {
+                                    type: 'line',
+                                    xMin: 60, // Valor no eixo X - da linha vermelha limte
+                                    xMax: 60, // Valor no eixo X - da linha vermelha limte
+                                    borderColor: 'rgb(255, 106, 0)', // Cor da linha
+                                    borderWidth: 2, // Largura da linha
+                                    label: {
+                                        content: 'Limite',
+                                        enabled: true,
+                                        position: 'end',
+                                        backgroundColor: 'rgb(255, 106, 0)',
+                                        font: {
+                                            size: 12
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    elements: {
+                        bar: {
+                            borderRadius: 4
                         }
                     }
                 }
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                    labels: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif' // Fonte personalizada na legenda
-                        }
-                    }
-                }
-            },
-            elements: {
-                bar: {
-                    borderRadius: 4
-                }
-            }
-        }
-    });
-});
+            });
+        });
 
-const labelsPizza = ['Média', 'Alta', 'Baixa'];
 
-// Defina diferentes conjuntos de dados para cada gráfico com cores exclusivas
-const dataPizza1 = {
-    labels: labelsPizza,
-    datasets: [{
-        data: [30, 40, 30],
-        backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)', 'rgb(77, 171, 208)']
-    }]
-};
 
-const dataPizza2 = {
-    labels: labelsPizza,
-    datasets: [{
-        data: [30, 40, 30],
-        backgroundColor: ['rgb(50, 150, 50)', 'rgb(90, 200, 90)', 'rgb(150, 255, 150)']
-    }]
-};
+        // Defina diferentes conjuntos de dados para cada gráfico com cores exclusivas
+        const dataPizza1 = {
+            labels: ['> 90,9%', '< 90,9%'],
+            datasets: [{
+                data: [40, 60],
+                backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)']
+            }]
+        };
 
-const dataPizza3 = {
-    labels: labelsPizza,
-    datasets: [{
-        data: [30, 40, 30],
-        backgroundColor: ['rgb(140, 110, 85) ', 'rgb(174, 140, 112) ', 'rgb(220, 190, 160)']
-    }]
-};
+        const dataPizza2 = {
+            labels: ['> 90,9%', '< 90,9%'],
+            datasets: [{
+                data: [40, 60],
+                backgroundColor: ['rgb(50, 150, 50)', 'rgb(90, 200, 90)']
+            }]
+        };
 
-const dataPizza4 = {
-    labels: labelsPizza,
-    datasets: [{
-        data: [30, 40, 30],
-        backgroundColor: ['rgb(255, 140, 0)', 'rgb(255, 180, 50)', 'rgb(255, 220, 140)']
-    }]
-};
+        const dataPizza3 = {
+            labels: ['> 90,9%', '< 90,9%'],
+            datasets: [{
+                data: [40, 60],
+                backgroundColor: ['rgb(140, 110, 85) ', 'rgb(174, 140, 112) ']
+            }]
+        };
 
-// Função para criar gráficos de pizza com a fonte personalizada
+        const dataPizza4 = {
+            labels: ['> 90,9%', '< 90,9%'],
+            datasets: [{
+                data: [40, 60],
+                backgroundColor: ['rgb(255, 140, 0)', 'rgb(255, 180, 50)']
+            }]
+        };
+
+        // Função para criar gráficos de pizza com a fonte personalizada
+        // Função para criar gráficos de pizza com a fonte personalizada e exibir valores
 function createPieChart(ctx, data) {
     new Chart(ctx, {
         type: 'pie',
@@ -390,22 +393,94 @@ function createPieChart(ctx, data) {
             responsive: true,
             plugins: {
                 legend: {
+                    position: 'bottom',
                     labels: {
                         font: {
                             family: 'Montserrat, Arial, Helvetica, sans-serif' // Fonte personalizada na legenda do gráfico de pizza
                         }
                     }
+                },
+                datalabels: { // Configuração do plugin datalabels
+                    color: '#ffffff', // Cor do texto
+                    font: {
+                        family: 'Montserrat, Arial, Helvetica, sans-serif',
+                        size: 14
+                    },
+                    formatter: (value, ctx) => {
+                        return value; // Exibe o valor diretamente
+                    }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels] // Ativação do plugin datalabels
     });
 }
 
-// Crie os gráficos de pizza com conjuntos de dados diferentes
-createPieChart(document.getElementById('graficoPizza1').getContext('2d'), dataPizza1);
-createPieChart(document.getElementById('graficoPizza2').getContext('2d'), dataPizza2);
-createPieChart(document.getElementById('graficoPizza3').getContext('2d'), dataPizza3);
-createPieChart(document.getElementById('graficoPizza4').getContext('2d'), dataPizza4);
+
+        // Crie os gráficos de pizza com conjuntos de dados diferentes
+        createPieChart(document.getElementById('graficoPizza1').getContext('2d'), dataPizza1);
+        createPieChart(document.getElementById('graficoPizza2').getContext('2d'), dataPizza2);
+        createPieChart(document.getElementById('graficoPizza3').getContext('2d'), dataPizza3);
+        createPieChart(document.getElementById('graficoPizza4').getContext('2d'), dataPizza4);
+
+
+        // Grafico de linha
+        function graficoLine() {
+
+            const lineCanva = document.getElementById("lineGrafico")
+            const t = new Chart(lineCanva, {
+                type: 'line',
+                data: {
+                    labels: ["2019", "2020", "2021", "2022"],
+                    datasets: [{
+                        label: 'Agua',
+                        data: [65, 59, 80, 81],
+                        fill: false,
+                        borderWidth: 2,
+                        borderColor: 'rgb(6, 204, 57)',
+                        backgroundColor: 'rgb(6, 204, 57)'
+                    },
+                    {
+                        label: 'Esgoto',
+                        data: [89, 93, 76, 22],
+                        fill: false,
+                        borderWidth: 2,
+                        borderColor: 'rgb(98, 55, 192)',
+                        backgroundColor: 'rgb(98, 55, 192)'
+                    },
+                    {
+                        label: 'Coleta de Lixo',
+                        data: [75, 78, 85, 50],
+                        fill: false,
+                        borderWidth: 2,
+                        borderColor: 'rgb(22, 55, 192)',
+                        backgroundColor: 'rgb(22, 55, 192)'
+                    },
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                stepSize: 10
+                            }
+                        }
+                    },
+                    plugins: {
+
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+        };
+        graficoLine();
 
     </script>
 </body>
