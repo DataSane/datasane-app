@@ -1,10 +1,10 @@
 var database = require('../configs/database/connection');
 
 async function municipios() {
-    console.log('Starting catch municipios');
+    console.log('Starting catch municipio');
 
     var sqlCommand = `
-        SELECT * FROM municipios;
+        SELECT * FROM municipio;
     `;
     
     console.log("Running SQL Command " + sqlCommand);

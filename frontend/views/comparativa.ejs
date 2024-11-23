@@ -18,7 +18,7 @@
 
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
-    <script src="/js/open-monitor-iframe.js" defer></script>
+    <script src="/js/benchmark-municipio.js" defer></script>
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
@@ -185,21 +185,32 @@
                 <div class="box-select">
                     <div class="select-card">
                         <h1 class="titulo-municipio">SELECIONE O 1ª MUNÍCIPIO</h1>
-                        
                         <div class="input-container">
-                            <input type="text" class="input_municipio"></input>
+                            <input list="municipio1" class="input_municipio">
+                            <datalist id="municipio1">
+                                <option value="SP1">
+                                <option value="SP2">
+                                <option value="SP3">
+                                <option value="SP4">
+                                <option value="SP5">
+                            </datalist>  
                             <i class="fa-solid fa-magnifying-glass icon-input"></i>
-                        </div>
-                        
+                        </div> 
                     </div>
-                    
                     <div class="select-card">
                         <h1 class="titulo-municipio">SELECIONE O 2ª MUNÍCIPIO</h1>
                         <div class="input-container">
-                            <input type="text" class="input_municipio"></input>
+                            <input list="municipio2" class="input_municipio">
+                            <datalist id="municipio2">
+                                <option value="SP1">
+                                <option value="SP2">
+                                <option value="SP3">
+                                <option value="SP4">
+                                <option value="SP5">
+                            </datalist>  
                             <i class="fa-solid fa-magnifying-glass icon-input"></i>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="box-benchmark">
                     <a href="/municipios/comparativa/resultados" class="btn-benchmark">BENCHMARKING
