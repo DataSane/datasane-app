@@ -51,20 +51,28 @@ router.get('/comparativa', async function(req, res) {
 });
 
 router.get('/comparativa/resultados', async function(req, res) {
-    if (req.session.authenticated) {
-
-        res.render('comparativaResultados', {
-            userid: req.session.user.session_userid,
-            isadmin: req.session.user.session_isadmin
-        });
-
-    }else{
+    if (!req.session.authenticated) {
         req.session.hasError = true;
-        req.session.errorMessage = 'Faça login antes de acessar a dashboard!'
-        res.redirect('/');
+        req.session.errorMessage = 'Faça login antes de acessar a dashboard!';
+        return res.redirect('/');
     }
-});
 
+    const id1 = req.query.id1;
+    const id2 = req.query.id2;
+
+    if (!id1 || !id2) {
+        req.session.hasError = true;
+        req.session.errorMessage = 'IDs dos municípios são necessários!';
+        return res.redirect('/municipios/comparativa');
+    }
+
+    res.render('comparativaResultados', {
+        userid: req.session.user.session_userid,
+        isadmin: req.session.user.session_isadmin,
+        municipio1Id: id1,
+        municipio2Id: id2
+    });
+});
 
 // router.get('/fazenda/:fazendaId', function(req, res){
 //     if (req.session.authenticated) {

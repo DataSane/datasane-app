@@ -15,4 +15,24 @@ async function municipios() {
     return resultToString; 
 }
 
-module.exports = {municipios};
+async function findMunicipioById(id){
+    console.log('Starting catch municipio by id');
+
+    try {
+        const sqlCommand = 'SELECT * FROM municipio WHERE idMunicipio = ?';
+        console.log("Running SQL Command: " + sqlCommand);
+
+        const resultQuery = await database.execute(sqlCommand, [id]);
+    
+        if (resultQuery.length > 0) {
+            return resultQuery[0]; 
+        } else {
+            throw new Error('Município não encontrado');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar município por ID:', error);
+        throw error;
+    }
+}
+
+module.exports = {municipios, findMunicipioById};
