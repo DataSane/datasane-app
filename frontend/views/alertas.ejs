@@ -10,18 +10,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
-    <script src="/js/open-analista-iframe.js" defer></script>
-    <script src="/js/municipios.js" defer></script>
+    <script src="/js/open-monitor-iframe.js" defer></script>
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
     <link rel="stylesheet" href="/css/side-bar.css">
     <!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
     <link rel="stylesheet" href="/css/header-main.css">
-    <link rel="stylesheet" href="/css/desempenho.css">
+    <link rel="stylesheet" href="/css/alertas.css">
+    <link rel="stylesheet" href="/css/modalAlerta.css">
+    <link rel="stylesheet" href="/css/modalComentario.css">
+    <link rel="stylesheet" href="/css/modalDelete.css">
 </head>
 
 <body>
@@ -44,7 +51,7 @@
                         <img width="17" height="17"
                             src="https://img.icons8.com/material-outlined/24/FFFFFF/dashboard-layout.png"
                             alt="dashboard-layout" />
-                        Dashboard
+                            Dashboard
                     </a>
                 </li>
                 <li class="accordion-item">
@@ -78,8 +85,8 @@
                                     alt="left-down2" />
                                 &nbsp; Estatísticas
                             </a>
-                        </li>
-                        <li class="accordion-subitem">
+                        </li> -->
+                        <!-- <li class="accordion-subitem">
                             <a href="/municipios/mapa">
                                 <img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
@@ -97,7 +104,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="accordion-item dash-on">
+                <li class="accordion-item">
                     <div class="accordion-item-header">
                         <img width="17" height="17"
                             src="https://img.icons8.com/material-outlined/24/FFFFFF/document--v1.png"
@@ -106,10 +113,10 @@
                     </div>
                     <ul class="accordion-submenu">
                         <li class="accordion-subitem">
-                            <a href="/relatorios/"><img width="10" style="transform: rotate(270deg);" height="10"
+                            <a href="/relatorios"><img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
                                     alt="left-down2" />&nbsp;Desempenho</a>
-                        </li>
+                    </li>
                         <!-- <li class="accordion-subitem">
                             <a href=""><img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
@@ -122,10 +129,9 @@
                         </li> -->
                     </ul>
                 </li>
-                <li class="nav-normal-item">
+                <li class="nav-normal-item dash-on">
                     <a href="/alertas">
-                        <img width="18" height="18" src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png"
-                            alt="box-important--v1" />
+                        <img width="18" height="18" src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png" alt="box-important--v1"/>
                         &nbsp;Alertas
                     </a>
                 </li>
@@ -165,53 +171,124 @@
 
         <header class="header-dashboard">
             <div class="inner-header">
-                <h1>Relatório</h1>
-                <a href="/monitor">/download</a>
+                <h1>Alertas</h1>
+                <!-- <a href="/monitor">/monitor</a> -->
             </div>
         </header>
-        <!--   <section class="search-container">
+        <!-- <section class="search-container">
             <div class="search-wrapper">
                 <input type="text" placeholder="Pesquisar...">
                 <button><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FFFFFF/search--v1.png" alt="search--v1"/></button>
-            </div> 
-        </section>-->
-        <section class="table-container">
-            <div class="Comeco-table-container">
-                <p>Saneamento Básico dos Municipios de São Paulo</p>
-                <button id="openModalFiltro">Filtro</button>
             </div>
-            <div class="main-table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>População</th>
-                            <th>População Sem Coleta de Lixo</th>
-                            <th>População Sem Água</th>
-                            <th>População Sem Esgoto</th>
-                            <th>Domicilio Sujeito a Inundações</th>
-                            <th>Plano Municipal</th>
-                        </tr>
-                    </thead>
+        </section> -->
+        <section class="content-alerta">
+                <div class="alert-diplay">
+                    <!-- MODELO ANALISTA -->
+                    <div class="alert-container">
+                        <div class="alert-title-container">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <p>Mauá</p>
+                        </div>
+                        <div id="buttonEditAlert" class="alert-button edit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </div>
+                        <div id="buttonComentariosAlert" class="alert-button chat">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div id="buttonDelete" class="alert-button delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </div>
+                    </div>
 
-                    <tbody id="table-body">
+                    <!-- MODELO details PARA SECRETARIO -->
+                    <details class="alert-container">
+                        <summary id="summaryId" class="alert-title-container pointer">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                <p>São Caetano do Sul</p>
+                                <i id="arrowDetail" class="fa-solid fa-chevron-right"></i>
+                        </summary>
+                        <div class="description-content">
+                            <h3>Descrição:</h3>
+                            <p>Detectamos uma discrepância significativa no investimento destinado ao abastecimento de água no município de São Caetano do Sul. Com base na comparação com a média estadual, a alocação de recursos está abaixo do necessário para garantir a cobertura adequada da população. Esse déficit pode resultar em problemas de escassez de água a curto e médio prazo, prejudicando o bem-estar dos moradores e a qualidade de vida na cidade.</p>
+                            <button id="buttonComentarDestails">Comentar</button>
+                        </div>
+                    </details>
 
-                    </tbody>
-                </table>
-            </div>
-            <div class="footer-table-container">
-                <button id="openModalAdicionarAnalista">Baixar Relatório</button>
-            </div>
-        </section>
-        <div id="modalAdicionarAnalista" class="modal">
-            <div class="modal-content">
-                <div class="header-modal">
-                    <span class="close" id="closeAdicionarAnalista">&times;</span>
+                    <div id="buttonAdd" class="button-adicionar"> Adicionar <i class="fa-solid fa-plus"></i></div>
                 </div>
-                <iframe src="/analistas/iframe" width="598" height="500" frameborder="0"></iframe>
+
+                
+            </section>
+        </main>
+
+        <!-- modalAlerta.ejs -->
+        <main id="modalAlerta" class="modal-container">
+            <div class="modal-content">
+                <div class="close-icon">
+                    <i class="fa-solid fa-x" id="closeButton"></i>
+                </div>
+                <h2>Alerta</h2>
+                <form class="form-alerta" action="" id="formAlerta">
+                    <p>Município</p>
+                    <div class="input-pesquisa">
+                        <input type="text" placeholder="Pesquise um município...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <p>Descrição</p>
+                    <textarea name="" id="desc_value" rows="15" cols="70" placeholder="Descreva o problema..."></textarea>
+                    <button class="btn-form-alerta confirm">Salvar</button>
+                    <button id="buttonCancel" class="btn-form-alerta">Cancelar</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- modalComentario -->
+        <main id="modalComentario" class="modal-container">
+            <div class="modal-content-coment">
+                <div class="close-icon">
+                    <i class="fa-solid fa-x" id="closeButtonComentario"></i>
+                </div>
+                <h2>Comentários</h2>
+                <div class="comentario-list">
+                    <div class="comentario-container">
+                        <div class="header-comentario">
+                            <div class="icon-profile"></div>
+                            <div class="header-title">
+                                <p>Secretário</p>
+                                <h3>Laura</h3>
+                            </div>
+                        </div>
+                        <p>Esse alerta me preocupa, mas preciso de mais detalhes para entender a situação. A que fatores específicos essa discrepância se deve? Sabemos que São Caetano do Sul tem um bom histórico de gestão de água, então o que exatamente está causando essa queda no investimento?</p>
+                    </div>
+                </div>
+                
+                <div class="form-enviar-comentario">
+                    <input type="text" name="" id="" placeholder="Digite aqui..."> <button>Enviar</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- MODAL DELETE -->
+    <main id="modalDelete" class="modal-container align-top">
+        <div class="modal-content align-top">
+            <div class="close-icon">
+                <i class="fa-solid fa-x" id="closeButton"></i>
+            </div>
+            <h2>Deseja mesmo apagar este alerta?</h2>
+            <div class="buttons-container">
+                <button id="buttonCancel" class="btn-container-style cancel">Cancelar</button>
+                <button class="btn-container-style delete-button">Apagar</button>
             </div>
         </div>
     </main>
 </body>
+
+<script src="https://kit.fontawesome.com/d94da5d75d.js" crossorigin="anonymous"></script>
+<script src="/js/modal-comentario.js"></script>
+<script src="/js/modal-delete.js"></script>
+<script src="/js/modal-alerta.js"></script>
+<script src="/js/alertas.js"></script>
+
+
 
 </html>

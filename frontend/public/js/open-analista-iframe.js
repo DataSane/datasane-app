@@ -1,12 +1,13 @@
 var openModalAdicionarAnalista = document.querySelector('#openModalAdicionarAnalista')
+var openModalEditarAnalista = document.querySelector('#openModalEditarAnalista')
 var modalAdicionarAnalista = document.querySelector('#modalAdicionarAnalista');
 var closeAdicionarAnalista = document.querySelector('#closeAdicionarAnalista');
-
-modalAdicionarAnalista.addEventListener('click', function(){
+    
+openModalAdicionarAnalista.addEventListener('click', function(){
     modalAdicionarAnalista.classList.toggle('active');
 })
 
-openModalAdicionarAnalista.addEventListener('click', function(){
+openModalEditarAnalista.addEventListener('click', function(){
     modalAdicionarAnalista.classList.toggle('active');
 })
 
