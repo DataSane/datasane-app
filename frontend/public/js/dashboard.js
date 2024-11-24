@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let data;
     let limite; // Valor da linha limite
     let cores;
+    let coberturaChart;
 
     verificarCategoria();
     verificarPorteMunicipio();
@@ -37,11 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (categoriaSelecionada == "agua_value") {
             categoriaSaneamento = "semAgua";
+            coberturaChart = "Água";
             limite = 1;
         } else if (categoriaSelecionada == "esgoto_value") {
             categoriaSaneamento = "semEsgoto";
+            coberturaChart = "Tratamento de Esgoto";
         } else if (categoriaSelecionada == "lixo_value") {
             categoriaSaneamento = "semLixo";
+            coberturaChart = "Coleta de Lixo";
         }
 
         console.log(categoriaSelecionada);
@@ -162,7 +166,7 @@ async function plotarGraficoMarcoLegal() {
                     display: true,
                     title: {
                         display: true,
-                        text: 'Porcentagem (%)'
+                        text: `Cobertura de ${coberturaChart} (%)`
                     },
                     ticks: {
                         font: {
@@ -192,7 +196,7 @@ async function plotarGraficoMarcoLegal() {
                                     lineWidth: 2
                                 },
                                 {
-                                    text: 'Meta Sinis',
+                                    text: 'Meta Marco Legal',
                                     fillStyle: 'rgb(255, 106, 0)',
                                     strokeStyle: 'rgb(255, 106, 0)',
                                     lineWidth: 2
@@ -253,6 +257,7 @@ async function atualizarDadosGraficoMarcoLegal() {
     myChart.data.datasets[0].backgroundColor = cores;
     myChart.options.plugins.annotation.annotations.linhaLimite.xMin = limite;
     myChart.options.plugins.annotation.annotations.linhaLimite.xMax = limite;
+    myChart.options.scales.x.title.text = `Cobertura de ${coberturaChart} (%)`;
     myChart.update();
 }
 
