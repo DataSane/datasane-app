@@ -1,13 +1,13 @@
 var dashboardModel = require('../models/dashboardModel');
 
-function getMunicipioMaisCritico(req, res, categoriaSaneamento, porteMunicipio, ordemLista, qtdMunicipios) {
+function getMunicipiosMaisCriticos(req, res, categoriaSaneamento, porteMunicipio, menosOuMaisAfetado, qtdMunicipios) {
     try {
-        const municipioMaisCritico = dashboardModel.municipioMaisCritico(categoriaSaneamento, porteMunicipio, ordemLista, qtdMunicipios);
-        return municipioMaisCritico;
+        const municipiosMaisCriticos = dashboardModel.municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado, qtdMunicipios);
+        return municipiosMaisCriticos;
     } catch {
         console.error("Error trying to catch most critical Municipio");
         throw err;
     }
 }
 
-module.exports = { getMunicipioMaisCritico };
+module.exports = { getMunicipiosMaisCriticos };

@@ -1,9 +1,8 @@
 var database = require('../configs/database/connection');
 
-function municipioMaisCritico(categoriaSaneamento, porteMunicipio, ordemLista, qtdMunicipios) {
+function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado, qtdMunicipios) {
     console.log('Starting catch the most critical Municipio(s)');
-
-
+    
     let atributoMunicipio;
     let atributoTipoMunicipio; 
 
@@ -28,13 +27,13 @@ function municipioMaisCritico(categoriaSaneamento, porteMunicipio, ordemLista, q
         porteMunicipio = 4;
     }
     
-    ordemLista = ordemLista == "decrescent" ? "DESC" : "";
+    menosOuMaisAfetado = menosOuMaisAfetado == "maisAfetado" ? "DESC" : "";
     
     var sqlCommand = `
         SELECT m.*,
         (m.${atributoMunicipio} / t.${atributoTipoMunicipio}) as razao
         FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} ORDER BY razao ${ordemLista}
+        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} ORDER BY razao ${menosOuMaisAfetado}
         LIMIT ${qtdMunicipios};
     `;
 
@@ -46,4 +45,4 @@ function municipioMaisCritico(categoriaSaneamento, porteMunicipio, ordemLista, q
     return resultToString;
 }
 
-module.exports = { municipioMaisCritico };
+module.exports = { municipiosMaisCriticos };
