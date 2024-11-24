@@ -18,6 +18,10 @@
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
     <!-- <script src="/js/graficos-simulativo-dashboard.js" defer></script> -->
+    
+    <!-- plotar-grafico-marco-legal-->
+     <script src="/js/dashboard.js"></script>
+    
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
     <link rel="stylesheet" href="/css/side-bar.css">
@@ -180,25 +184,26 @@
                     <div class="filter-container">
                         <div class="filter-content">
                             <label>Categoria</label>
-                            <select>
-                                <option value="">Abastecimento de água</option>
-                                <option value="">Tratamento de Esgoto</option>
-                                <option value="">Coleta de Lixo</option>
-                                <option value="">Risco a Inundação</option>
+                            <select id="selectCategoria">
+                                <option value="agua_value">Abastecimento de água</option>
+                                <option value="esgoto_value">Tratamento de Esgoto</option>
+                                <option value="lixo_value">Coleta de Lixo</option>
                             </select>
                         </div>
                         <div class="filter-content">
                             <label>População</label>
-                            <select>
-                                <option value="">0 a 500mil</option>
-                                <option value="">500mil a 1milhão</option>
+                            <select id="selectPorteMunicipio">
+                                <option value="geral_value">0 a 12milhões</option>
+                                <option value="pequeno_value">0 a 50mil</option>
+                                <option value="medio_value">50.001 a 200mil</option>
+                                <option value="grande_value">200.001 a 12milhões</option>
                             </select>
                         </div>
                         <div class="filter-content">
                             <label>Ordenar por</label>
-                            <select>
-                                <option value="">Menos afetado</option>
-                                <option value="">Mais afetado</option>
+                            <select id="selectMenosOuMaisSelecionado">
+                                <option value="menosAfetado_value">Menos afetado</option>
+                                <option value="maisAfetado_value">Mais afetado</option>
                             </select>
                         </div>
 
@@ -234,123 +239,6 @@
         </div>
     </main>
     <script>
-        const labels = ['Diadema', 'Santo André', 'Piracicaba', 'São Caetano do Sul', 'São Paulo'];
-        const limite = 50; // Valor da linha limite
-        const valores = [70, 100, 20, 15, 40]; // Valores das barras
-
-        // Define as cores dinamicamente
-        const cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)'); // Verde se passar, vermelho se não passar
-        
-        const data = {
-            labels: labels,
-            datasets: [{
-                axis: 'y',
-                label: 'Cobertura município',
-                data: [70, 100, 20, 15, 40],
-                fill: false,
-                backgroundColor: cores,
-                borderWidth: 1
-            }]
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-
-            const ctx = document.getElementById('grafico1').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Município'
-                            },
-                            ticks: {
-                                font: {
-                                    family: 'Montserrat, Arial, Helvetica, sans-serif',
-                                    size: 14
-                                }
-                            }
-                        },
-                        x: {
-                            beginAtZero: true,
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Porcentagem (%)'
-                            },
-                            ticks: {
-                                font: {
-                                    family: 'Montserrat, Arial, Helvetica, sans-serif',
-                                    size: 14
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            display: true,
-                            labels: {
-                                generateLabels: function (chart) {
-                                    return [
-                                        {
-                                            text: 'Abaixo do limite',
-                                            fillStyle: 'rgb(241, 57, 57)',
-                                            strokeStyle: 'rgb(241, 57, 57)',
-                                            lineWidth: 2
-                                        },
-                                        {
-                                            text: 'Acima do limite',
-                                            fillStyle: 'rgb(6, 204, 57)',
-                                            strokeStyle: 'rgb(6, 204, 57)',
-                                            lineWidth: 2
-                                        },
-                                        {
-                                            text: 'Meta Sinis',
-                                            fillStyle: 'rgb(255, 106, 0)',
-                                            strokeStyle: 'rgb(255, 106, 0)',
-                                            lineWidth: 2
-                                        }
-                                ];
-                        }}
-                        },
-                        annotation: {
-                            annotations: {
-                                linhaLimite: {
-                                    type: 'line',
-                                    xMin: 60, // Valor no eixo X - da linha vermelha limte
-                                    xMax: 60, // Valor no eixo X - da linha vermelha limte
-                                    borderColor: 'rgb(255, 106, 0)', // Cor da linha
-                                    borderWidth: 2, // Largura da linha
-                                    label: {
-                                        content: 'Limite',
-                                        enabled: true,
-                                        position: 'end',
-                                        backgroundColor: 'rgb(255, 106, 0)',
-                                        font: {
-                                            size: 12
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    elements: {
-                        bar: {
-                            borderRadius: 4
-                        }
-                    }
-                }
-            });
-        });
-
-
-
         // Defina diferentes conjuntos de dados para cada gráfico com cores exclusivas
         const dataPizza1 = {
             labels: ['> 90,9%', '< 90,9%'],
