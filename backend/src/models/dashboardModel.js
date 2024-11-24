@@ -1,6 +1,6 @@
 var database = require('../configs/database/connection');
 
-function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado, qtdMunicipios) {
+async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
     console.log('Starting catch the most critical Municipio(s)');
     
     let atributoMunicipio;
@@ -34,15 +34,15 @@ function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMais
         (m.${atributoMunicipio} / t.${atributoTipoMunicipio}) as razao
         FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
         ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} ORDER BY razao ${menosOuMaisAfetado}
-        LIMIT ${qtdMunicipios};
+        LIMIT 5;
     `;
 
     console.log(sqlCommand);
 
-    const resultQuery = database.execute(sqlCommand);
-    const resultToString = JSON.stringify(resultQuery);
+    // const resultQuery = await database.execute(sqlCommand);
+    // const resultToString = JSON.stringify(resultQuery);
 
-    return resultToString;
+    return await database.execute(sqlCommand);
 }
 
 module.exports = { municipiosMaisCriticos };
