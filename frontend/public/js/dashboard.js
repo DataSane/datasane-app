@@ -33,8 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function verificarCategoria() {
         let categoriaSelecionada = selectCategoria.value;
 
+        limite = 10;
+
         if (categoriaSelecionada == "agua_value") {
             categoriaSaneamento = "semAgua";
+            limite = 1;
         } else if (categoriaSelecionada == "esgoto_value") {
             categoriaSaneamento = "semEsgoto";
         } else if (categoriaSelecionada == "lixo_value") {
@@ -60,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function verificarMenosOuMaisAfetados() {
         let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
-        
+
         if (menosOuMaisSelecionado == "maisAfetado_value") {
             menosOuMaisAfetado = "maisAfetado";
         } else {
@@ -68,13 +71,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    selectCategoria.addEventListener("change", async function () {
+    selectCategoria.addEventListener("change", function () {
         verificarCategoria();
         atualizarDadosGraficoMarcoLegal();
     });
 
-    function getMaisCriticos() {
-        return fetch(url, {
+    selectPorteMunicipio.addEventListener("change", function () {
+        verificarPorteMunicipio();
+        atualizarDadosGraficoMarcoLegal();
+    });
+
+    selectMenosOuMaisSelecionado.addEventListener("change", function () {
+        verificarMenosOuMaisAfetados();
+        atualizarDadosGraficoMarcoLegal();
+    });
+
+    async function getMaisCriticos() {
+        const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,166 +97,164 @@ document.addEventListener('DOMContentLoaded', function () {
                 porteMunicipio: porteMunicipio,
                 menosOuMaisAfetado: menosOuMaisAfetado
             })
-        }).then(async response => {
-            if (!response.ok) {
-                throw new Error('Error in getMaisCriticos');
-            }
-
-            return await response.json();
         });
-    }
 
-    async function plotarGraficoMarcoLegal() {
-        let arrayMaisCriticos = await getMaisCriticos();
-
-        primeiroMaisCritico = arrayMaisCriticos[0];
-        segundoMaisCritico = arrayMaisCriticos[1];
-        terceiroMaisCritico = arrayMaisCriticos[2];
-        quartoMaisCritico = arrayMaisCriticos[3];
-        quintoMaisCritico = arrayMaisCriticos[4];
-
-        labels = [primeiroMaisCritico.nome, segundoMaisCritico.nome, terceiroMaisCritico.nome, quartoMaisCritico.nome, quintoMaisCritico.nome];
-        valores = [primeiroMaisCritico.populacaoSemAgua, segundoMaisCritico.populacaoSemAgua, terceiroMaisCritico.populacaoSemAgua, quartoMaisCritico.populacaoSemAgua, quintoMaisCritico.populacaoSemAgua];
-        limite = 99;
-        cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
-
-        data = {
-            labels: labels,
-            datasets: [{
-                axis: 'y',
-                label: 'Cobertura município',
-                data: [valores[0], valores[1], valores[2], valores[3], valores[4]],
-                fill: false,
-                backgroundColor: cores,
-                borderWidth: 1
-            }]
-        };
-
-
-        if (myChart) {
-            myChart.destroy();
+        if (!response.ok) {
+            throw new Error('Error in getMaisCriticos');
         }
 
-        const ctx = document.getElementById('grafico1').getContext('2d');
-        myChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Município'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Montserrat, Arial, Helvetica, sans-serif',
-                                size: 14
-                            }
-                        }
-                    },
-                    x: {
-                        beginAtZero: true,
+        return await response.json();
+    }
+
+async function plotarGraficoMarcoLegal() {
+    let arrayMaisCriticos = await getMaisCriticos();
+
+    primeiroMaisCritico = arrayMaisCriticos[0];
+    segundoMaisCritico = arrayMaisCriticos[1];
+    terceiroMaisCritico = arrayMaisCriticos[2];
+    quartoMaisCritico = arrayMaisCriticos[3];
+    quintoMaisCritico = arrayMaisCriticos[4];
+
+    labels = [arrayMaisCriticos.map(municipio => municipio.nome)];
+    valores = [arrayMaisCriticos.map(valores => valores.populacaoSemAgua)];
+    cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
+
+    data = {
+        labels: labels,
+        datasets: [{
+            axis: 'y',
+            label: 'Cobertura município',
+            data: valores,
+            fill: false,
+            backgroundColor: cores,
+            borderWidth: 1
+        }]
+    };
+
+
+    if (myChart) {
+        myChart.destroy();
+    }
+
+    const ctx = document.getElementById('grafico1').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
                         display: true,
-                        title: {
-                            display: true,
-                            text: 'Porcentagem (%)'
-                        },
-                        ticks: {
-                            font: {
-                                family: 'Montserrat, Arial, Helvetica, sans-serif',
-                                size: 14
-                            }
+                        text: 'Município'
+                    },
+                    ticks: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif',
+                            size: 14
                         }
                     }
                 },
-                plugins: {
-                    legend: {
-                        position: 'bottom',
+                x: {
+                    beginAtZero: true,
+                    display: true,
+                    title: {
                         display: true,
-                        labels: {
-                            generateLabels: function (chart) {
-                                return [
-                                    {
-                                        text: 'Abaixo do limite',
-                                        fillStyle: 'rgb(241, 57, 57)',
-                                        strokeStyle: 'rgb(241, 57, 57)',
-                                        lineWidth: 2
-                                    },
-                                    {
-                                        text: 'Acima do limite',
-                                        fillStyle: 'rgb(6, 204, 57)',
-                                        strokeStyle: 'rgb(6, 204, 57)',
-                                        lineWidth: 2
-                                    },
-                                    {
-                                        text: 'Meta Sinis',
-                                        fillStyle: 'rgb(255, 106, 0)',
-                                        strokeStyle: 'rgb(255, 106, 0)',
-                                        lineWidth: 2
-                                    }
-                                ];
-                            }
-                        }
+                        text: 'Porcentagem (%)'
                     },
-                    annotation: {
-                        annotations: {
-                            linhaLimite: {
-                                type: 'line',
-                                xMin: 99, // Valor no eixo X - da linha vermelha limte
-                                xMax: 99, // Valor no eixo X - da linha vermelha limte
-                                borderColor: 'rgb(255, 106, 0)', // Cor da linha
-                                borderWidth: 2, // Largura da linha
-                                label: {
-                                    content: 'Limite',
-                                    enabled: true,
-                                    position: 'end',
-                                    backgroundColor: 'rgb(255, 106, 0)',
-                                    font: {
-                                        size: 12
-                                    }
+                    ticks: {
+                        font: {
+                            family: 'Montserrat, Arial, Helvetica, sans-serif',
+                            size: 14
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    display: true,
+                    labels: {
+                        generateLabels: function (chart) {
+                            return [
+                                {
+                                    text: 'Abaixo do limite',
+                                    fillStyle: 'rgb(241, 57, 57)',
+                                    strokeStyle: 'rgb(241, 57, 57)',
+                                    lineWidth: 2
+                                },
+                                {
+                                    text: 'Acima do limite',
+                                    fillStyle: 'rgb(6, 204, 57)',
+                                    strokeStyle: 'rgb(6, 204, 57)',
+                                    lineWidth: 2
+                                },
+                                {
+                                    text: 'Meta Sinis',
+                                    fillStyle: 'rgb(255, 106, 0)',
+                                    strokeStyle: 'rgb(255, 106, 0)',
+                                    lineWidth: 2
+                                }
+                            ];
+                        }
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        linhaLimite: {
+                            type: 'line',
+                            xMin: limite, // Valor no eixo X - da linha vermelha limite
+                            xMax: limite, // Valor no eixo X - da linha vermelha limite
+                            borderColor: 'rgb(255, 106, 0)', // Cor da linha
+                            borderWidth: 2, // Largura da linha
+                            label: {
+                                content: 'Limite',
+                                enabled: true,
+                                position: 'end',
+                                backgroundColor: 'rgb(255, 106, 0)',
+                                font: {
+                                    size: 12
                                 }
                             }
                         }
                     }
-                },
-                elements: {
-                    bar: {
-                        borderRadius: 4
-                    }
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 4
                 }
             }
-        });
-    };
+        }
+    });
+};
 
-    async function atualizarDadosGraficoMarcoLegal() {
-        let arrayMaisCriticos = await getMaisCriticos();
+async function atualizarDadosGraficoMarcoLegal() {
+    let arrayMaisCriticos = await getMaisCriticos();
 
-        primeiroMaisCritico = arrayMaisCriticos[0];
-        segundoMaisCritico = arrayMaisCriticos[1];
-        terceiroMaisCritico = arrayMaisCriticos[2];
-        quartoMaisCritico = arrayMaisCriticos[3];
-        quintoMaisCritico = arrayMaisCriticos[4];
+    primeiroMaisCritico = arrayMaisCriticos[0];
+    segundoMaisCritico = arrayMaisCriticos[1];
+    terceiroMaisCritico = arrayMaisCriticos[2];
+    quartoMaisCritico = arrayMaisCriticos[3];
+    quintoMaisCritico = arrayMaisCriticos[4];
 
-        labels = [primeiroMaisCritico.nome, segundoMaisCritico.nome, terceiroMaisCritico.nome, quartoMaisCritico.nome, quintoMaisCritico.nome];
-        valores = [primeiroMaisCritico.populacaoSemAgua, segundoMaisCritico.populacaoSemAgua, terceiroMaisCritico.populacaoSemAgua, quartoMaisCritico.populacaoSemAgua, quintoMaisCritico.populacaoSemAgua];
-        limite = 99;
-        cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
+    labels = arrayMaisCriticos.map(municipio => municipio.nome);
+    valores = arrayMaisCriticos.map(valores => valores.populacaoSemAgua);
+    cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
 
-        data = [valores[0], valores[1], valores[2], valores[3], valores[4]];
+    data = valores;
 
-        atualizarChartData(labels, data);
-    }
+    console.log(labels, valores);
 
-    function atualizarChartData(newLabels, newData) {
-        myChart.data.labels = newLabels;
-        myChart.data.datasets[0].data = newData;
-        myChart.update();
-    }
-
+    myChart.data.labels = labels;
+    myChart.data.datasets[0].data = valores;
+    myChart.data.datasets[0].backgroundColor = cores;
+    myChart.options.plugins.annotation.annotations.linhaLimite.xMin = limite;
+    myChart.options.plugins.annotation.annotations.linhaLimite.xMax = limite;
+    myChart.update();
+}
 
 
 
