@@ -4,23 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const url = `${actualIP}${dashboardEndpoint}`;
 
-    function fetchMunicipios() {
-        return fetch(url)
-            .then(async response => {
-                if (!response.ok) {
-                    throw new Error('Error in getMunicipios');
-                }
-
-                return await response.json();
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-            });
-    }
-
     async function getCobertura() {
-        let municipios = await fetchMunicipios();
-
-        
-    }
+        const response = fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({}),
+        }
+    )}
 });
