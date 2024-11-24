@@ -121,7 +121,7 @@ async function plotarGraficoMarcoLegal() {
 
     labels = [arrayMaisCriticos.map(municipio => municipio.nome)];
     valores = [arrayMaisCriticos.map(valores => valores.populacaoSemAgua)];
-    cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
+    cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
 
     data = {
         labels: labels,
@@ -246,7 +246,7 @@ async function atualizarDadosGraficoMarcoLegal() {
 
     labels = arrayMaisCriticos.map(municipio => municipio.nome);
     valores = arrayMaisCriticos.map(valores => valores.populacaoSemAgua);
-    cores = valores.map(valor => valor > limite ? 'rgb(6, 204, 57)' : 'rgb(241, 57, 57)');
+    cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
 
     data = valores;
 
