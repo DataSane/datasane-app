@@ -4,7 +4,7 @@ async function authLogin(email, senha) {
     console.log('User Model accessed > function autenticarLogin');
 
     var sqlCommand = `
-        SELECT userid, isadmin FROM user
+        SELECT userid, isadmin, username FROM user
         WHERE email = "${email}" AND password = "${senha}";
     `;
     console.log("Running SQL command: \n" + sqlCommand);
@@ -15,7 +15,8 @@ async function authLogin(email, senha) {
             return {
                  success: true, 
                  bd_userid: resultQuery[0].userid,
-                 bd_isadmin: resultQuery[0].isadmin
+                 bd_isadmin: resultQuery[0].isadmin,
+                 bd_username: resultQuery[0].username
             };
         } else {
             return { 

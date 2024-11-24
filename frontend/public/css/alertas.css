@@ -1,6 +1,7 @@
 .content-alerta{
     margin-top: 200px;
     margin-bottom: 50px;
+    font-family: 'Poppins', 'sans-serif';
 }
 
 .alert-diplay{
@@ -8,7 +9,6 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    font-family: 'Poppins', 'sans-serif';
 }
 
 
@@ -41,7 +41,9 @@
     align-items: center;
     font-size: 25px;
     cursor: pointer;
+    border: none;
 }
+
 
 .edit{
     background-color: #FDAF1C;
@@ -60,7 +62,7 @@
     cursor: pointer;
     position: fixed;
     background-color: #45CD23;
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
     color: #fff;
@@ -69,6 +71,10 @@
     bottom: 20px;
     left: 17rem;
     border-radius: 10px;
+}
+
+.enable{
+    display: flex;
 }
 
 
@@ -111,3 +117,4 @@
     cursor: pointer;
     align-self: flex-end;
 }
+
