@@ -33,6 +33,13 @@
     position: relative;
 }
 
+.comentario-list{
+    display: flex;
+    flex-direction: column;
+    height: 85%;
+    overflow-y: auto;
+}
+
 .header-comentario{
     display: flex;
     align-items: center;

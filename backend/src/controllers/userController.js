@@ -11,7 +11,8 @@ function login(req,res){
 
         req.session.user = {
           session_userid: resultadoQuery.bd_userid,
-          session_isadmin: resultadoQuery.bd_isadmin
+          session_isadmin: resultadoQuery.bd_isadmin,
+          session_username: resultadoQuery.bd_username
         };
 
         res.redirect('/dashboard');
