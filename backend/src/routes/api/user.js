@@ -3,6 +3,25 @@ const router = express.Router();
 const userController = require('../../controllers/userController');
 
 router.get('/', (req, res) => {
+    userController.getAllUser(req, res);
+});
+
+
+
+router.post('/adicionar', (req, res) => {
+    userController.addUser(req, res);
+});
+
+router.delete('/deletar', (req, res) => {
+    userController.deleteUser(req, res);
+});
+
+router.put('/atualizar/:idUser', (req, res) => {
+    userController.updateUser(req, res);
+});
+
+router.get('/procurar/:idUser', (req, res) => {
+    userController.getUserWithId(req, res);
 });
 
 router.post('/login', userController.login);

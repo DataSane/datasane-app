@@ -40,7 +40,7 @@
     position: relative;
     top: 50px;
     width: 90%;
-    height: 430px;
+    height: 70vh;
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
@@ -61,7 +61,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
     padding: 0 40px 0 40px;
 }
 .table-container > .footer-table-container > button{

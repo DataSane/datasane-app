@@ -26,6 +26,7 @@
 .modal-content{
     background-color: #fff;
     padding: 40px;
+    width: 600px;
     border-radius: 10px;
 }
 
@@ -44,7 +45,7 @@
     top: 12px;
 }
 
-.input-pesquisa>input,.form-alerta>textarea{
+.input-pesquisa>input,.form-alerta>textarea,.input_form{
     padding: 10px 5px;
     width: 100%;
     border: 1px solid #d1d1d1;

@@ -31,7 +31,95 @@ function login(req,res){
     });
 }
 
+function getAllUser(req, res){
+    
+  userModel.getAllUser()
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+
+function addUser(req, res){
+  const name = req.body.userName;
+  const email = req.body.email;
+  const senha = req.body.senha;
+  const confSenha = req.body.confSenha;
+  const acesso = req.body.acesso;
+    
+  userModel.addUser(name, email, senha, confSenha, acesso)
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+function addUser(req, res){
+  const name = req.body.userName;
+  const email = req.body.email;
+  const senha = req.body.senha;
+  const confSenha = req.body.confSenha;
+  const acesso = req.body.acesso;
+    
+  userModel.addUser(name, email, senha, confSenha, acesso)
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+
+function updateUser(req, res){
+  const idUser = req.params.idUser
+  const name = req.body.userName;
+  const email = req.body.email;
+  const senha = req.body.senha;
+  const confSenha = req.body.confSenha;
+  const acesso = req.body.acesso;
+    
+  userModel.updateUser(idUser, name, email, senha, confSenha, acesso)
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+
+function deleteUser(req, res){
+  const idUser = req.body.idUser
+    
+  userModel.deleteUser(idUser)
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+
+function getUserWithId(req, res){
+  const idUser = req.params.idUser
+    
+  userModel.getUserWithId(idUser)
+    .then(resposta => {
+        res.status(200).json(resposta)
+    }).catch(err => {
+      res.status(500)
+      console.log("Erro controller")
+    })
+}
+
  
 module.exports = {
-    login
+    login,
+    getAllUser,
+    addUser,
+    deleteUser,
+    getUserWithId,
+    updateUser
 }
