@@ -45,8 +45,71 @@ async function isAdmin(userId){
     return resultQuery[0].administrador;
 }
 
+function getAllUser(){
+    console.log('Starting get all user');
+
+    const sqlCommand = `
+        SELECT * FROM user;
+    `;
+
+    return database.execute(sqlCommand);
+}
+
+function addUser(name, email, senha, confSenha, acesso){
+    console.log('Starting add user');
+
+    const sqlCommand = `
+       INSERT INTO user (username, email, password, isadmin) VALUES 
+        ('${name}', '${email}', '${senha}', ${acesso});
+    `;
+
+    return database.execute(sqlCommand);
+}
+
+function updateUser(idUser, name, email, senha, confSenha, acesso){
+    console.log('Starting update user');
+
+    const sqlCommand = `
+       UPDATE user
+            SET 
+                username = '${name}',
+                email = '${email}',
+                password = '${senha}',
+                isadmin = ${acesso}
+            WHERE 
+                userid = ${idUser};
+    `;
+
+    return database.execute(sqlCommand);
+}
+
+function deleteUser(idUser){
+    console.log('Starting delete user');
+
+    const sqlCommand = `
+       DELETE FROM user WHERE userid = ${idUser};
+    `;
+
+    return database.execute(sqlCommand);
+}
+
+function getUserWithId(idUser){
+    console.log('Starting get user with id');
+
+    const sqlCommand = `
+       SELECT * FROM user WHERE userid = ${idUser};
+    `;
+
+    return database.execute(sqlCommand);
+}
+
 module.exports = {
     authLogin,
     isAdmin,
+    getAllUser,
+    addUser,
+    deleteUser,
+    getUserWithId,
+    updateUser
 };
 

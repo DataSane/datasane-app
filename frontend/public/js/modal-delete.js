@@ -9,7 +9,7 @@ function toggleModalDelete(idAlerta) {
             <div class="close-icon">
                 <i class="fa-solid fa-x" id="closeButton"></i>
             </div>
-            <h2>Deseja mesmo apagar este alerta?</h2>
+            <h2 style="text-align:center">Deseja mesmo apagar este alerta?</h2>
             <div class="buttons-container">
                 <button id="buttonCancel" class="btn-container-style cancel">Cancelar</button>
                 <button onclick="apagarAlerta(${idAlerta})" class="btn-container-style delete-button">Apagar</button>
