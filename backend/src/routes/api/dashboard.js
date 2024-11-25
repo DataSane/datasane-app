@@ -6,7 +6,7 @@ router.post('/', (req, res) => {
     dashboardController.getMunicipiosMaisCriticos(req, res);
 })
 
-router.get('/', req, res => {
+router.post('/cobertura', (req, res) => {
     dashboardController.getQtdAcimaAbaixoCobertura(req, res);
 })
 

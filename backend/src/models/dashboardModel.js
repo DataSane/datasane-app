@@ -1,11 +1,9 @@
 var database = require('../configs/database/connection');
 
-async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
-    console.log('Starting catch the most critical Municipio(s)');
+let atributoMunicipio;
+let atributoTipoMunicipio;
 
-    let atributoMunicipio;
-    let atributoTipoMunicipio;
-
+function verificarCategoria(categoriaSaneamento) {
     if (categoriaSaneamento == "semLixo") {
         atributoMunicipio = "populacaoSemLixo";
         atributoTipoMunicipio = "parametroSemColetaDeLixo";
@@ -16,6 +14,12 @@ async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menos
         atributoMunicipio = "populacaoSemEsgoto";
         atributoTipoMunicipio = "parametroSemEsgoto";
     }
+}
+
+async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
+    console.log('Starting catch the most critical Municipio(s)');
+
+    verificarCategoria(categoriaSaneamento);
 
     if (porteMunicipio == "geral") {
         porteMunicipio = 1;
@@ -42,12 +46,14 @@ async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menos
     return await database.execute(sqlCommand);
 }
 
-async function qtdAcimaAbaixoCobertura() {
+async function qtdAcimaAbaixoCobertura(categoriaSaneamento) {
     console.log('Starting catch municipios with above and below coverage');
+
+    verificarCategoria(categoriaSaneamento);
 
     var sqlCommand = `
         SELECT COUNT(*) FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.populacaoSemEsgoto) < 80.9;
+        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.${atributoMunicipio}) < 80.9;
     `;
 
     return await database.execute(sqlCommand);

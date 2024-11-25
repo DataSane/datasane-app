@@ -13,8 +13,15 @@ function getMunicipiosMaisCriticos(req, res) {
     });
 }
 
-function getQtdAcimaAbaixoCobertura() {
-    return dashboardModel.qtdAcimaAbaixoCobertura();
+function getQtdAcimaAbaixoCobertura(req, res) {
+    const categoriaSaneamento = req.body.categoriaSaneamento;
+    
+    dashboardModel.qtdAcimaAbaixoCobertura(categoriaSaneamento).then(function (data) {
+        res.status(200).json(data);
+    }).catch(function (err) {
+        console.error("Error trying to get number of cities above and below coverage");
+        res.status(500).json({ error: 'Error retrieving number of cities above and below coverage' });
+    });
 }
 
 module.exports = { getMunicipiosMaisCriticos, getQtdAcimaAbaixoCobertura };
