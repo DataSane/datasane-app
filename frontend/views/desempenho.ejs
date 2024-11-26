@@ -22,6 +22,11 @@
     <!-- <link rel="stylesheet" href="./css/dashboard.css"> -->
     <link rel="stylesheet" href="/css/header-main.css">
     <link rel="stylesheet" href="/css/desempenho.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -48,32 +53,33 @@
                     </a>
                 </li>
                 <% if (isadmin) { %>
-                <li class="accordion-item">
-                    <div class="accordion-item-header">
-                        <img width="20" height="20"
-                            src="https://img.icons8.com/material-outlined/24/FFFFFF/maintenance.png"
-                            alt="maintenance" />
-                        <span>Gerenciar</span>
-                    </div>
+                    <li class="accordion-item">
+                        <div class="accordion-item-header">
+                            <img width="20" height="20"
+                                src="https://img.icons8.com/material-outlined/24/FFFFFF/maintenance.png"
+                                alt="maintenance" />
+                            <span>Gerenciar</span>
+                        </div>
 
-                    <ul class="accordion-submenu">
-                        <li class="accordion-subitem">
-                            <a href="/analistas"><img width="10" style="transform: rotate(270deg);" height="10"
-                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
-                                    alt="left-down2" />&nbsp; Analistas
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <% } %>
-                <li class="accordion-item">
-                    <div class="accordion-item-header">
-                        <img width="17" height="17" src="https://img.icons8.com/material-outlined/24/FFFFFF/address.png"
-                            alt="address" />
-                        <span>Municípios</span>
-                    </div>
-                    <ul class="accordion-submenu">
-                        <!-- <li class="accordion-subitem">
+                        <ul class="accordion-submenu">
+                            <li class="accordion-subitem">
+                                <a href="/analistas"><img width="10" style="transform: rotate(270deg);" height="10"
+                                        src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
+                                        alt="left-down2" />&nbsp; Analistas
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <% } %>
+                        <li class="accordion-item">
+                            <div class="accordion-item-header">
+                                <img width="17" height="17"
+                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/address.png"
+                                    alt="address" />
+                                <span>Municípios</span>
+                            </div>
+                            <ul class="accordion-submenu">
+                                <!-- <li class="accordion-subitem">
                             <a href="/municipios">
                                 <img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
@@ -89,30 +95,31 @@
                                 &nbsp; Mapa
                             </a>
                         </li> -->
-                        <li class="accordion-subitem">
-                            <a href="/municipios/comparativa">
-                                <img width="10" style="transform: rotate(270deg);" height="10"
-                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
-                                    alt="left-down2" />
-                                &nbsp; Comparativa
-                            </a>
+                                <li class="accordion-subitem">
+                                    <a href="/municipios/comparativa">
+                                        <img width="10" style="transform: rotate(270deg);" height="10"
+                                            src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
+                                            alt="left-down2" />
+                                        &nbsp; Comparativa
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-                <li class="accordion-item dash-on">
-                    <div class="accordion-item-header">
-                        <img width="17" height="17"
-                            src="https://img.icons8.com/material-outlined/24/FFFFFF/document--v1.png"
-                            alt="document--v1" />
-                        <span>Relatório</span>
-                    </div>
-                    <ul class="accordion-submenu">
-                        <li class="accordion-subitem">
-                            <a href="/relatorios/"><img width="10" style="transform: rotate(270deg);" height="10"
-                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
-                                    alt="left-down2" />&nbsp;Desempenho</a>
-                        </li>
-                        <!-- <li class="accordion-subitem">
+                        <li class="accordion-item dash-on">
+                            <div class="accordion-item-header">
+                                <img width="17" height="17"
+                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/document--v1.png"
+                                    alt="document--v1" />
+                                <span>Relatório</span>
+                            </div>
+                            <ul class="accordion-submenu">
+                                <li class="accordion-subitem">
+                                    <a href="/relatorios/"><img width="10" style="transform: rotate(270deg);"
+                                            height="10"
+                                            src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
+                                            alt="left-down2" />&nbsp;Desempenho</a>
+                                </li>
+                                <!-- <li class="accordion-subitem">
                             <a href=""><img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
                                     alt="left-down2" />&nbsp;Rentabilidade</a>
@@ -122,35 +129,36 @@
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
                                     alt="left-down2" />&nbsp;Anomalias</a>
                         </li> -->
-                    </ul>
-                </li>
-                <li class="nav-normal-item">
-                    <a href="/alertas">
-                        <img width="18" height="18" src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png"
-                            alt="box-important--v1" />
-                        &nbsp;Alertas
-                    </a>
-                </li>
-                <li class="accordion-item">
-                    <div class="accordion-item-header">
-                        <img width="17" height="17"
-                            src="https://img.icons8.com/material-outlined/24/FFFFFF/settings--v1.png"
-                            alt="settings--v1" />
-                        <span>Configuração</span>
-                    </div>
-                    <ul class="accordion-submenu">
-                        <li class="accordion-subitem">
-                            <a href="/profile"><img width="10" style="transform: rotate(270deg);" height="10"
-                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
-                                    alt="left-down2" />&nbsp;Perfil</a>
+                            </ul>
                         </li>
-                        <!-- <li class="accordion-subitem">
+                        <li class="nav-normal-item">
+                            <a href="/alertas">
+                                <img width="18" height="18"
+                                    src="https://img.icons8.com/windows/32/FFFFFF/box-important--v1.png"
+                                    alt="box-important--v1" />
+                                &nbsp;Alertas
+                            </a>
+                        </li>
+                        <li class="accordion-item">
+                            <div class="accordion-item-header">
+                                <img width="17" height="17"
+                                    src="https://img.icons8.com/material-outlined/24/FFFFFF/settings--v1.png"
+                                    alt="settings--v1" />
+                                <span>Configuração</span>
+                            </div>
+                            <ul class="accordion-submenu">
+                                <li class="accordion-subitem">
+                                    <a href="/profile"><img width="10" style="transform: rotate(270deg);" height="10"
+                                            src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
+                                            alt="left-down2" />&nbsp;Perfil</a>
+                                </li>
+                                <!-- <li class="accordion-subitem">
                             <a href=""><img width="10" style="transform: rotate(270deg);" height="10"
                                     src="https://img.icons8.com/material-outlined/24/FFFFFF/left-down2.png"
                                     alt="left-down2" />&nbsp;Suporte</a>
                         </li> -->
-                    </ul>
-                </li>
+                            </ul>
+                        </li>
             </ul>
         </nav>
         <div class="footer-aside">
@@ -180,7 +188,30 @@
         <section class="table-container">
             <div class="Comeco-table-container">
                 <p>Saneamento Básico dos Municipios de São Paulo</p>
-                <button id="openModalFiltro">Filtro</button>
+                <div class="filtro-container">
+                    <label for="">Categoria:</label>
+                    <select name="" id="">
+                        <option value="">Abastecimento de água</option>
+                        <option value="">Tratamento de esgoto</option>
+                        <option value="">Coleta de lixo</option>
+                    </select>
+                </div>
+                <div class="filtro-container">
+                    <label for="">Ordenar por:</label>
+                    <select name="" id="">
+                        <option value="">Menos afetado</option>
+                        <option value="">Mais afetado</option>
+                    </select>
+                </div>
+                <div class="filtro-container">
+                    <label for="">População:</label>
+                    <select name="" id="">
+                        <option value="">Todos</option>
+                        <option value="">0 a 50 mil</option>
+                        <option value="">50.001 a 200 mil</option>
+                        <option value="">200.001 a 12 milhões</option>
+                    </select>
+                </div>
             </div>
             <div class="main-table-container">
                 <table>
