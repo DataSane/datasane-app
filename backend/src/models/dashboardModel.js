@@ -46,17 +46,28 @@ async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menos
     return await database.execute(sqlCommand);
 }
 
-async function qtdAcimaAbaixoCobertura(categoriaSaneamento) {
+async function qtdAcimaEAbaixoCobertura(categoriaSaneamento) {
     console.log('Starting catch municipios with above and below coverage');
 
     verificarCategoria(categoriaSaneamento);
 
-    var sqlCommand = `
+    var sqlCommandAcima = `
+        SELECT COUNT(*) FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
+        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.${atributoMunicipio}) > 80.9;
+    `;
+
+    var sqlCommandAbaixo = `
         SELECT COUNT(*) FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
         ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.${atributoMunicipio}) < 80.9;
     `;
 
-    return await database.execute(sqlCommand);
+    const resultAcima = await database.execute(sqlCommandAcima);
+    const resultAbaixo = await database.execute(sqlCommandAbaixo);
+
+    return {
+        acima: resultAcima,
+        abaixo: resultAbaixo
+    };
 }
 
-module.exports = { municipiosMaisCriticos, qtdAcimaAbaixoCobertura };
+module.exports = { municipiosMaisCriticos, qtdAcimaEAbaixoCobertura };

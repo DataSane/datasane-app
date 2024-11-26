@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
+            body: JSON.stringify({  
                 categoriaSaneamento: "semAgua"
             })
         });
@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!response.ok) {
             throw new Error('Error in getCobertura');
         }
-
         
         return await response.json();
     }

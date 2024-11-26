@@ -13,10 +13,10 @@ function getMunicipiosMaisCriticos(req, res) {
     });
 }
 
-function getQtdAcimaAbaixoCobertura(req, res) {
+function getQtdAcimaEAbaixoCobertura(req, res) {
     const categoriaSaneamento = req.body.categoriaSaneamento;
     
-    dashboardModel.qtdAcimaAbaixoCobertura(categoriaSaneamento).then(function (data) {
+    dashboardModel.qtdAcimaEAbaixoCobertura(categoriaSaneamento).then(function (data) {
         res.status(200).json(data);
     }).catch(function (err) {
         console.error("Error trying to get number of cities above and below coverage");
@@ -24,4 +24,4 @@ function getQtdAcimaAbaixoCobertura(req, res) {
     });
 }
 
-module.exports = { getMunicipiosMaisCriticos, getQtdAcimaAbaixoCobertura };
+module.exports = { getMunicipiosMaisCriticos, getQtdAcimaEAbaixoCobertura };

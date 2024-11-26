@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
 })
 
 router.post('/cobertura', (req, res) => {
-    dashboardController.getQtdAcimaAbaixoCobertura(req, res);
+    dashboardController.getQtdAcimaEAbaixoCobertura(req, res);
 })
 
 module.exports = router;
