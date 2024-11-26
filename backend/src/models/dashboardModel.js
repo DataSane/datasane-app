@@ -2,17 +2,24 @@ var database = require('../configs/database/connection');
 
 let atributoMunicipio;
 let atributoTipoMunicipio;
+let parametroSnis;
 
 function verificarCategoria(categoriaSaneamento) {
     if (categoriaSaneamento == "semLixo") {
+        parametroSnis = "95.7";
         atributoMunicipio = "populacaoSemLixo";
         atributoTipoMunicipio = "parametroSemColetaDeLixo";
     } else if (categoriaSaneamento == "semAgua") {
+        parametroSnis = "90.9";
         atributoMunicipio = "populacaoSemAgua";
         atributoTipoMunicipio = "parametroSemAgua";
     } else if (categoriaSaneamento == "semEsgoto") {
+        parametroSnis = "80.9";
         atributoMunicipio = "populacaoSemEsgoto";
         atributoTipoMunicipio = "parametroSemEsgoto";
+    } else if (categoriaSaneamento == "inundacao") {
+        parametroSnis = "86.8";
+        atributoMunicipio = "domicilioSujeitoInundacoes";
     }
 }
 
@@ -52,13 +59,11 @@ async function qtdAcimaEAbaixoCobertura(categoriaSaneamento) {
     verificarCategoria(categoriaSaneamento);
 
     var sqlCommandAcima = `
-        SELECT COUNT(*) FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.${atributoMunicipio}) > 80.9;
+        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) < ${parametroSnis};
     `;
 
     var sqlCommandAbaixo = `
-        SELECT COUNT(*) FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = 1 AND (100 - m.${atributoMunicipio}) < 80.9;
+        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) < ${parametroSnis};
     `;
 
     const resultAcima = await database.execute(sqlCommandAcima);
