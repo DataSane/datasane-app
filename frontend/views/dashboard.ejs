@@ -18,13 +18,13 @@
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
     <!-- <script src="/js/graficos-simulativo-dashboard.js" defer></script> -->
-    
+
     <!-- plotar-grafico-marco-legal-->
     <script src="/js/dashboard.js"></script>
 
     <!-- plotar-grafico-pizza1-->
     <script src="/js/grafico-pizza1.js"></script>
-     
+
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
     <link rel="stylesheet" href="/css/side-bar.css">
@@ -242,80 +242,6 @@
         </div>
     </main>
     <script>
-        // Defina diferentes conjuntos de dados para cada gráfico com cores exclusivas
-        const dataPizza1 = {
-            labels: ['> 90,9%', '< 90,9%'],
-            datasets: [{
-                data: [40, 60],
-                backgroundColor: ['rgb(15, 80, 150)', 'rgb(96, 130, 182)']
-            }]
-        };
-
-        const dataPizza2 = {
-            labels: ['> 90,9%', '< 90,9%'],
-            datasets: [{
-                data: [40, 60],
-                backgroundColor: ['rgb(50, 150, 50)', 'rgb(90, 200, 90)']
-            }]
-        };
-
-        const dataPizza3 = {
-            labels: ['> 90,9%', '< 90,9%'],
-            datasets: [{
-                data: [40, 60],
-                backgroundColor: ['rgb(140, 110, 85) ', 'rgb(174, 140, 112) ']
-            }]
-        };
-
-        const dataPizza4 = {
-            labels: ['> 90,9%', '< 90,9%'],
-            datasets: [{
-                data: [40, 60],
-                backgroundColor: ['rgb(255, 140, 0)', 'rgb(255, 180, 50)']
-            }]
-        };
-
-        // Função para criar gráficos de pizza com a fonte personalizada
-        // Função para criar gráficos de pizza com a fonte personalizada e exibir valores
-function createPieChart(ctx, data) {
-    new Chart(ctx, {
-        type: 'pie',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif' // Fonte personalizada na legenda do gráfico de pizza
-                        }
-                    }
-                },
-                datalabels: { // Configuração do plugin datalabels
-                    color: '#ffffff', // Cor do texto
-                    font: {
-                        family: 'Montserrat, Arial, Helvetica, sans-serif',
-                        size: 14
-                    },
-                    formatter: (value, ctx) => {
-                        return value; // Exibe o valor diretamente
-                    }
-                }
-            }
-        },
-        plugins: [ChartDataLabels] // Ativação do plugin datalabels
-    });
-}
-
-
-        // Crie os gráficos de pizza com conjuntos de dados diferentes
-        createPieChart(document.getElementById('graficoPizza1').getContext('2d'), dataPizza1);
-        createPieChart(document.getElementById('graficoPizza2').getContext('2d'), dataPizza2);
-        createPieChart(document.getElementById('graficoPizza3').getContext('2d'), dataPizza3);
-        createPieChart(document.getElementById('graficoPizza4').getContext('2d'), dataPizza4);
-
-
         // Grafico de linha
         function graficoLine() {
 

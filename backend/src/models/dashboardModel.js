@@ -59,7 +59,7 @@ async function qtdAcimaEAbaixoCobertura(categoriaSaneamento) {
     verificarCategoria(categoriaSaneamento);
 
     var sqlCommandAcima = `
-        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) < ${parametroSnis};
+        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) > ${parametroSnis};
     `;
 
     var sqlCommandAbaixo = `
