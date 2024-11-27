@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let porteMunicipio;
     let menosOuMaisAfetado;
 
+    let categoriaSaneamentoMunicipio;
     let primeiroMaisCritico;
     let segundoMaisCritico;
     let terceiroMaisCritico;
@@ -38,13 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (categoriaSelecionada == "agua_value") {
             categoriaSaneamento = "semAgua";
+            categoriaSaneamentoMunicipio = "populacaoSemAgua";
             coberturaChart = "Água";
             limite = 1;
         } else if (categoriaSelecionada == "esgoto_value") {
             categoriaSaneamento = "semEsgoto";
+            categoriaSaneamentoMunicipio = "populacaoSemEsgoto";
             coberturaChart = "Tratamento de Esgoto";
         } else if (categoriaSelecionada == "lixo_value") {
             categoriaSaneamento = "semLixo";
+            categoriaSaneamentoMunicipio = "populacaoSemLixo";
             coberturaChart = "Coleta de Lixo";
         }
     }
@@ -109,189 +113,156 @@ document.addEventListener('DOMContentLoaded', function () {
         return await response.json();
     }
 
-async function plotarGraficoMarcoLegal() {
-    let arrayMaisCriticos = await getMaisCriticos();
+    async function plotarGraficoMarcoLegal() {
+        let arrayMaisCriticos = await getMaisCriticos();
 
-    primeiroMaisCritico = arrayMaisCriticos[0];
-    segundoMaisCritico = arrayMaisCriticos[1];
-    terceiroMaisCritico = arrayMaisCriticos[2];
-    quartoMaisCritico = arrayMaisCriticos[3];
-    quintoMaisCritico = arrayMaisCriticos[4];
+        primeiroMaisCritico = arrayMaisCriticos[0];
+        segundoMaisCritico = arrayMaisCriticos[1];
+        terceiroMaisCritico = arrayMaisCriticos[2];
+        quartoMaisCritico = arrayMaisCriticos[3];
+        quintoMaisCritico = arrayMaisCriticos[4];
 
-    labels = [arrayMaisCriticos.map(municipio => municipio.nome)];
-    valores = [arrayMaisCriticos.map(valores => valores.populacaoSemAgua)];
-    cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
+        labels = arrayMaisCriticos.map(municipio => municipio.nome);
+        valores = arrayMaisCriticos.map(valores => valores[categoriaSaneamentoMunicipio]);
 
-    data = {
-        labels: labels,
-        datasets: [{
-            axis: 'y',
-            label: 'Cobertura município',
-            data: valores,
-            fill: false,
-            backgroundColor: cores,
-            borderWidth: 1
-        }]
-    };
+        cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
+
+        data = {
+            labels: labels,
+            datasets: [{
+                axis: 'y',
+                label: 'Cobertura município',
+                data: valores,
+                fill: false,
+                backgroundColor: cores,
+                borderWidth: 1
+            }]
+        };
 
 
-    if (myChart) {
-        myChart.destroy();
-    }
+        if (myChart) {
+            myChart.destroy();
+        }
 
-    const ctx = document.getElementById('grafico1').getContext('2d');
-    myChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Município'
+        const ctx = document.getElementById('grafico1').getContext('2d');
+        myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Município'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Montserrat, Arial, Helvetica, sans-serif',
+                                size: 14
+                            }
+                        }
                     },
-                    ticks: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif',
-                            size: 14
+                    x: {
+                        beginAtZero: true,
+                        display: true,
+                        title: {
+                            display: true,
+                            text: `Cobertura de ${coberturaChart} (%)`
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Montserrat, Arial, Helvetica, sans-serif',
+                                size: 14
+                            }
                         }
                     }
                 },
-                x: {
-                    beginAtZero: true,
-                    display: true,
-                    title: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
                         display: true,
-                        text: `Cobertura de ${coberturaChart} (%)`
+                        labels: {
+                            generateLabels: function (chart) {
+                                return [
+                                    {
+                                        text: 'Abaixo do limite',
+                                        fillStyle: 'rgb(241, 57, 57)',
+                                        strokeStyle: 'rgb(241, 57, 57)',
+                                        lineWidth: 2
+                                    },
+                                    {
+                                        text: 'Acima do limite',
+                                        fillStyle: 'rgb(6, 204, 57)',
+                                        strokeStyle: 'rgb(6, 204, 57)',
+                                        lineWidth: 2
+                                    },
+                                    {
+                                        text: 'Meta Marco Legal',
+                                        fillStyle: 'rgb(255, 106, 0)',
+                                        strokeStyle: 'rgb(255, 106, 0)',
+                                        lineWidth: 2
+                                    }
+                                ];
+                            }
+                        }
                     },
-                    ticks: {
-                        font: {
-                            family: 'Montserrat, Arial, Helvetica, sans-serif',
-                            size: 14
-                        }
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    display: true,
-                    labels: {
-                        generateLabels: function (chart) {
-                            return [
-                                {
-                                    text: 'Abaixo do limite',
-                                    fillStyle: 'rgb(241, 57, 57)',
-                                    strokeStyle: 'rgb(241, 57, 57)',
-                                    lineWidth: 2
-                                },
-                                {
-                                    text: 'Acima do limite',
-                                    fillStyle: 'rgb(6, 204, 57)',
-                                    strokeStyle: 'rgb(6, 204, 57)',
-                                    lineWidth: 2
-                                },
-                                {
-                                    text: 'Meta Marco Legal',
-                                    fillStyle: 'rgb(255, 106, 0)',
-                                    strokeStyle: 'rgb(255, 106, 0)',
-                                    lineWidth: 2
-                                }
-                            ];
-                        }
-                    }
-                },
-                annotation: {
-                    annotations: {
-                        linhaLimite: {
-                            type: 'line',
-                            xMin: limite, // Valor no eixo X - da linha vermelha limite
-                            xMax: limite, // Valor no eixo X - da linha vermelha limite
-                            borderColor: 'rgb(255, 106, 0)', // Cor da linha
-                            borderWidth: 2, // Largura da linha
-                            label: {
-                                content: 'Limite',
-                                enabled: true,
-                                position: 'end',
-                                backgroundColor: 'rgb(255, 106, 0)',
-                                font: {
-                                    size: 12
+                    annotation: {
+                        annotations: {
+                            linhaLimite: {
+                                type: 'line',
+                                xMin: limite, // Valor no eixo X - da linha vermelha limite
+                                xMax: limite, // Valor no eixo X - da linha vermelha limite
+                                borderColor: 'rgb(255, 106, 0)', // Cor da linha
+                                borderWidth: 2, // Largura da linha
+                                label: {
+                                    content: 'Limite',
+                                    enabled: true,
+                                    position: 'end',
+                                    backgroundColor: 'rgb(255, 106, 0)',
+                                    font: {
+                                        size: 12
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            },
-            elements: {
-                bar: {
-                    borderRadius: 4
+                },
+                elements: {
+                    bar: {
+                        borderRadius: 4
+                    }
                 }
             }
-        }
-    });
-};
+        });
+    };
 
-async function atualizarDadosGraficoMarcoLegal() {
-    let arrayMaisCriticos = await getMaisCriticos();
+    async function atualizarDadosGraficoMarcoLegal() {
+        let arrayMaisCriticos = await getMaisCriticos();
 
-    primeiroMaisCritico = arrayMaisCriticos[0];
-    segundoMaisCritico = arrayMaisCriticos[1];
-    terceiroMaisCritico = arrayMaisCriticos[2];
-    quartoMaisCritico = arrayMaisCriticos[3];
-    quintoMaisCritico = arrayMaisCriticos[4];
+        primeiroMaisCritico = arrayMaisCriticos[0];
+        segundoMaisCritico = arrayMaisCriticos[1];
+        terceiroMaisCritico = arrayMaisCriticos[2];
+        quartoMaisCritico = arrayMaisCriticos[3];
+        quintoMaisCritico = arrayMaisCriticos[4];
 
-    labels = arrayMaisCriticos.map(municipio => municipio.nome);
-    valores = arrayMaisCriticos.map(valores => valores.populacaoSemAgua);
-    cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
+        labels = arrayMaisCriticos.map(municipio => municipio.nome);
+        valores = arrayMaisCriticos.map(valores => valores[categoriaSaneamentoMunicipio]);
 
-    data = valores;
+        cores = valores.map(valor => valor > limite ? 'rgb(241, 57, 57)' : 'rgb(6, 204, 57)');
 
-    console.log(labels, valores);
+        data = valores;
 
-    myChart.data.labels = labels;
-    myChart.data.datasets[0].data = valores;
-    myChart.data.datasets[0].backgroundColor = cores;
-    myChart.options.plugins.annotation.annotations.linhaLimite.xMin = limite;
-    myChart.options.plugins.annotation.annotations.linhaLimite.xMax = limite;
-    myChart.options.scales.x.title.text = `Cobertura de ${coberturaChart} (%)`;
-    myChart.update();
-}
+        console.log(labels, valores);
 
-
-
-    // plotGraficoMarcoLegal();
-
-    // async function plotMaisCriticosSemAguaGeral() {
-    //     console.log('entrando plotMaisCriticosSemAguaGeral');
-
-    //     try {
-    //         const semAguaMaisCriticos = await fetchMunicipiosMaisCriticos("semAgua", "geral", "maisAfetado");
-    //         console.log(semAguaMaisCriticos);
-    //         return semAguaMaisCriticos;
-    //     } catch (error) {
-    //         console.error('Error Plotting Mais Críticos Sem Agua:', error);
-    //     }
-    // }
-
-    // async function fetchMunicipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
-    //     reqURL = `/municipiosMaisCriticos?categoriaSaneamento=${categoriaSaneamento}&porteMunicipio=${porteMunicipio}&menosOuMaisAfetado=${menosOuMaisAfetado}`;
-
-    //     console.log("ESTOU fetchMunicipiosMaisCriticos");
-
-    //     return fetch(reqURL)
-    //         .then(async response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Error in getMunicipios');
-    //             }
-
-    //             console.log(response.json());
-    //             return await response.json();
-    //         })
-    //         .catch(error => {
-    //             console.error('Fetch error:', error);
-    //         })
-    // }
+        myChart.data.labels = labels;
+        myChart.data.datasets[0].data = valores;
+        myChart.data.datasets[0].backgroundColor = cores;
+        myChart.options.plugins.annotation.annotations.linhaLimite.xMin = limite;
+        myChart.options.plugins.annotation.annotations.linhaLimite.xMax = limite;
+        myChart.options.scales.x.title.text = `Cobertura de ${coberturaChart} (%)`;
+        myChart.update();
+    }
 })

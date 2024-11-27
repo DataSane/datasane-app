@@ -110,6 +110,11 @@ body{
     width: 100%;
     
 }
+
+.disableMenu{
+    display: none;
+}
+
 .accordion-item a{
     color: #FFF;
     text-decoration: none;
