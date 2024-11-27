@@ -59,19 +59,19 @@ async function qtdAcimaEAbaixoCobertura(categoriaSaneamento) {
     verificarCategoria(categoriaSaneamento);
 
     var sqlCommandAcima = `
-        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) > ${parametroSnis};
+        SELECT COUNT(*) as acima FROM municipio as m WHERE (100 - m.${atributoMunicipio}) > ${parametroSnis};
     `;
 
     var sqlCommandAbaixo = `
-        SELECT COUNT(*) FROM municipio as m WHERE (100 - m.${atributoMunicipio}) < ${parametroSnis};
+        SELECT COUNT(*) as abaixo FROM municipio as m WHERE (100 - m.${atributoMunicipio}) < ${parametroSnis};
     `;
 
     const resultAcima = await database.execute(sqlCommandAcima);
     const resultAbaixo = await database.execute(sqlCommandAbaixo);
 
     return {
-        acima: resultAcima,
-        abaixo: resultAbaixo
+        resultAcima,
+        resultAbaixo
     };
 }
 

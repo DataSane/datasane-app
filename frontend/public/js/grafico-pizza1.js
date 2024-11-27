@@ -6,6 +6,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
     plotPizzaGraphics();
 
+    async function plotPizzaGraphics() {
+        let dataPizza;
+        let labels;
+        let data;
+        let backgroundColor;
+        let municipios;
+        let categoriaSaneamento;
+        let porcentagemSnis;
+        let primeiroBackground;
+        let segundoBackground;
+        let ctx;
+
+        
+        for (table = 1; table <= 4; table++) {
+            switch (table) {
+                case 1:
+                    categoriaSaneamento = "semAgua";
+                    porcentagemSnis = "90,9";
+                    primeiroBackground = "rgb(15, 80, 150)";
+                    segundoBackground = "rgb(96, 130, 182)";
+                    break;
+                case 2:
+                    categoriaSaneamento = "semLixo";
+                    porcentagemSnis = "95,7";
+                    primeiroBackground = "rgb(50, 150, 50)";
+                    segundoBackground = "rgb(90, 200, 90)";
+                    break;
+                case 3:
+                    categoriaSaneamento = "semEsgoto";
+                    porcentagemSnis = "80,9";
+                    primeiroBackground = "rgb(140, 110, 85)";
+                    segundoBackground = "rgb(174, 140, 112)";
+                    break;
+                case 4:
+                    categoriaSaneamento = "inundacao";
+                    porcentagemSnis = "86,8";
+                    primeiroBackground = "rgb(255, 140, 0)";
+                    segundoBackground = "rgb(255, 180, 50)";
+                    break;
+            }
+
+            
+            municipios = await tratativaDadosPizza(categoriaSaneamento);
+            labels = [`Acima ${porcentagemSnis}%`, `Abaixo ${porcentagemSnis}%`];
+            backgroundColor = [`${primeiroBackground}`, `${segundoBackground}`];
+            data = [municipios.municipiosAcima, municipios.municipiosAbaixo];
+            ctx = document.getElementById(`graficoPizza${table}`).getContext('2d');
+            
+            dataPizza = {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: backgroundColor
+                }]
+            };
+    
+            createPieChart(ctx, dataPizza);
+        }
+    }
+
     async function getQtdMunicipiosAcimaAbaixo(categoriaSaneamento) {
         let reqUrl = `${url}/cobertura`;
 
@@ -25,60 +85,26 @@ document.addEventListener("DOMContentLoaded", function () {
             throw new Error('Error in getQtdMunicipiosAcimaAbaixo');
         }
 
-        let object = await response.json();
-        console.log(object);
-        return object;
+        return await response.json();
     }
 
-    getQtdMunicipiosAcimaAbaixo();
-
-    async function tratativaDadosPizza() {
+    async function tratativaDadosPizza(categoriaSaneamento) {
         const totalMunicipios = 645;
 
-        const municipiosAcimaAbaixo = await getQtdMunicipiosAcimaAbaixo();
-        const municipiosAcima = (municipiosAcimaAbaixo.acima * totalMunicipios) / 100;
-        const municipiosAbaixo = (municipiosAcimaAbaixo.abaixo * totalMunicipios) / 100;
+        const municipiosAcimaAbaixo = await getQtdMunicipiosAcimaAbaixo(categoriaSaneamento);
+        console.log(municipiosAcimaAbaixo);
+        
+        const municipiosAcima = parseFloat((municipiosAcimaAbaixo.resultAcima[0].acima * 100) / totalMunicipios).toFixed(2);
+        const municipiosAbaixo = parseFloat((municipiosAcimaAbaixo.resultAbaixo[0].abaixo * 100) / totalMunicipios).toFixed(2);
+        
+        console.log(municipiosAbaixo, municipiosAcima);
 
-
-    }
-
-    async function plotPizzaGraphics() {
-        let labels;
-        let data;
-        let backgroundColor;
-
-        let dataPizza = {
-            labels: labels,
-            datasets: [{
-                data: data,
-                backgroundColor: backgroundColor
-            }]
+        return {
+            municipiosAcima,
+            municipiosAbaixo
         };
-
-        for (table = 1; table <= 4; table++) {
-            switch (table) {
-                case 1:
-                    labels = ['Acima 90,9%', 'Abaixo 90,9%'];
-                    data = 
-                    backgroundColor = ['rgb(15, 80, 150)', 'rgb(96, 130, 182)'];
-                    break;
-                case 2:
-                    labels = ['Acima 95,7%', 'Abaixo 95,7%'];
-                    backgroundColor = ['rgb(50, 150, 50)', 'rgb(90, 200, 90)'];
-                    break;
-                case 3:
-                    labels = ['Acima 80,9%', 'Abaixo 80,9%'];
-                    backgroundColor = ['rgb(140, 110, 85) ', 'rgb(174, 140, 112) '];
-                    break;
-                case 4:
-                    labels = ['Acima 86,8%', 'Abaixo 86,8%'];
-                    backgroundColor = ['rgb(255, 140, 0)', 'rgb(255, 180, 50)'];
-                    break;
-            }
-
-            createPieChart(document.getElementById('graficoPizza${table}').getContext('2d'), dataPizza);
-        }
     }
+
 
     // Função para criar gráficos de pizza com a fonte personalizada
     // Função para criar gráficos de pizza com a fonte personalizada e exibir valores
