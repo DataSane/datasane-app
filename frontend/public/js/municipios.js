@@ -1,8 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
     const actualIP = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
     const municipiosEndpoint = '/api/municipios';
-    
+
     const url = `${actualIP}${municipiosEndpoint}`;
+
+    console.log('entrando fetch');
+    fetchMunicipios();
+    plotMunicipios();
+
+    function verificarCategoria() {
+        let categoriaSelecionada = selectCategoria.value;
+        
+        limite = 10;
+
+        if (categoriaSelecionada == "agua_value") {
+            categoriaSaneamento = "semAgua";
+            categoriaSaneamentoMunicipio = "populacaoSemAgua";
+            coberturaChart = "Água";
+            limite = 1;
+        } else if (categoriaSelecionada == "esgoto_value") {
+            categoriaSaneamento = "semEsgoto";
+            categoriaSaneamentoMunicipio = "populacaoSemEsgoto";
+            coberturaChart = "Tratamento de Esgoto";
+        } else if (categoriaSelecionada == "lixo_value") {
+            categoriaSaneamento = "semLixo";
+            categoriaSaneamentoMunicipio = "populacaoSemLixo";
+            coberturaChart = "Coleta de Lixo";
+        }
+    }
 
     function fetchMunicipios() {
         return fetch(url)
@@ -17,9 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Fetch error:', error);
             });
     }
-
-    console.log('entrando fetch');
-    fetchMunicipios();
 
     async function plotMunicipios() {
         console.log('entrando plotMunicipios');
@@ -55,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 sujeitoInundacoes.textContent = municipio.domicilioSujeitoInundacoes + '%';
                 row.appendChild(sujeitoInundacoes);
 
-                const planoMunicipal =document.createElement('td');
+                const planoMunicipal = document.createElement('td');
                 planoMunicipal.textContent = municipio.possuiPlanoMunicipal;
                 row.appendChild(planoMunicipal);
 
@@ -66,5 +88,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    plotMunicipios();
 });

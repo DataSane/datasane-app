@@ -47,10 +47,23 @@ document.addEventListener('DOMContentLoaded', function () {
             categoriaSaneamento = "semLixo";
             coberturaChart = "Coleta de Lixo";
         }
-
-        console.log(categoriaSelecionada);
     }
 
+    selectCategoria.addEventListener("change", function () {
+        verificarCategoria();
+        atualizarDadosGraficoMarcoLegal();
+    });
+
+    selectPorteMunicipio.addEventListener("change", function () {
+        verificarPorteMunicipio();
+        atualizarDadosGraficoMarcoLegal();
+    });
+
+    selectMenosOuMaisSelecionado.addEventListener("change", function () {
+        verificarMenosOuMaisAfetados();
+        atualizarDadosGraficoMarcoLegal();
+    });
+    
     function verificarPorteMunicipio() {
         let porteSelecionado = selectPorteMunicipio.value;
 
@@ -75,20 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    selectCategoria.addEventListener("change", function () {
-        verificarCategoria();
-        atualizarDadosGraficoMarcoLegal();
-    });
-
-    selectPorteMunicipio.addEventListener("change", function () {
-        verificarPorteMunicipio();
-        atualizarDadosGraficoMarcoLegal();
-    });
-
-    selectMenosOuMaisSelecionado.addEventListener("change", function () {
-        verificarMenosOuMaisAfetados();
-        atualizarDadosGraficoMarcoLegal();
-    });
 
     async function getMaisCriticos() {
         const response = await fetch(url, {
