@@ -44,6 +44,9 @@
     border: none;
 }
 
+.edit,.chat,.delete{
+    transition: 0.3s all;
+}
 
 .edit{
     background-color: #FDAF1C;
@@ -55,6 +58,18 @@
 
 .delete{
     background-color: #FF3333;
+}
+
+.delete:hover{
+    background-color: #e73030;
+}
+
+.edit:hover{
+    background-color: #f0a51a;
+}
+
+.chat:hover{
+    background-color: #31a0eb;
 }
 
 
@@ -71,6 +86,12 @@
     bottom: 20px;
     left: 17rem;
     border-radius: 10px;
+    transition: 0.3s all;
+}
+
+.button-adicionar:hover{
+    background-color: #3db61f;
+
 }
 
 .enable{
@@ -102,6 +123,7 @@
     flex-direction: column;
 }
 
+
 .description-content>p{
     text-align: justify;
 }
@@ -116,5 +138,11 @@
     color: #fff;
     cursor: pointer;
     align-self: flex-end;
+    transition: 0.3s all;
+}
+
+.description-content>button:hover{
+    background-color: #31a0eb;
+
 }
 

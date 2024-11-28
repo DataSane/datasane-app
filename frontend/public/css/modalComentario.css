@@ -96,7 +96,9 @@
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    transition: 0.3s all;
 }
+
 
 .btn_disabled{
     display: none;
@@ -146,6 +148,12 @@
     background-color: #34AFFF;
     color: #fff;
     cursor: pointer;
+    transition: 0.3s all;
+}
+
+.form-enviar-comentario>button:hover,.btn_edit_comentario:hover{
+    background-color: #31a0eb;
+
 }
 
 /* DRODOWN MENU */
