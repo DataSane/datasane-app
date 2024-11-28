@@ -40,10 +40,21 @@
     overflow-y: auto;
 }
 
+.header-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-container>i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .header-comentario{
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 0px 10px;
 }
 
 .icon-profile{
@@ -58,14 +69,50 @@
 }
 
 .comentario-container{
-    background-color: #e2e2e2;
+    background-color: #dbdada;
     padding: 15px;
     margin-top: 20px;
     border-radius: 5px;
+    width: 60%;
 }
 
-.comentario-container>p{
+.comentario-right{
+    background-color: #b7e1fd;
+    align-self: flex-end;
+}
+
+.edit_comentario_container{
+    display: flex;
+    align-items: center;
     margin-top: 10px;
+    gap: 10px;
+}
+
+.btn_edit_comentario{
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #34AFFF;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn_disabled{
+    display: none;
+}
+
+
+.input_comentario{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+}
+
+.input_comentario:disabled{
+    background-color: transparent;
+    border: none;
+    color: black;
 }
 
 .form-enviar-comentario{
@@ -86,7 +133,12 @@
 
 .form-enviar-comentario>input{
     flex: 5;
-    background-color: #e2e2e2;
+    background-color: #dbdada;
+    font-size: 16px;
+}
+
+.form-enviar-comentario>input::placeholder{
+    color: #000;
 }
 
 .form-enviar-comentario>button{
@@ -95,3 +147,43 @@
     color: #fff;
     cursor: pointer;
 }
+
+/* DRODOWN MENU */
+.dropbtn {
+    color: #000;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.menuEnable{
+    display: block;
+}
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {background-color: #ddd;}
+  
+  

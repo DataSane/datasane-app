@@ -10,8 +10,16 @@ router.post('/adicionar', (req, res) => {
     comentarioController.addComentario(req, res);
 })
 
-router.delete('/deletar', (req, res) => {
-    comentarioController.deletarComentario(req, res);
+router.put('/atualizar/:idComentario', (req, res) => {
+    comentarioController.updateComentario(req, res);
+})
+
+router.delete('/deletarTodosComentariosAlerta', (req, res) => {
+    comentarioController.deletarTodosComentariosAlerta(req, res);
+})
+
+router.delete('/deletarComentarioId', (req, res) => {
+    comentarioController.deletarComentarioId(req, res);
 })
 
 module.exports = router;

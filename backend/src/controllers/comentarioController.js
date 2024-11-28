@@ -9,6 +9,17 @@ function getComentariosPorAlerta(req, res) {
     )
 }
 
+function updateComentario(req, res) {
+    const idComentario =  req.params.idComentario;
+    const comentario = req.body.comentario;
+
+    comentarioModel.updateComentario(idComentario, comentario).then(response => {
+        res.status(200).json(response);
+    }).catch(err =>
+        console.log("Error controller")
+    )
+}
+
 function addComentario(req, res) {
     const userId =  req.body.idUser
     const idAlerta =  req.body.idAlerta
@@ -23,14 +34,24 @@ function addComentario(req, res) {
     )
 }
 
-function deletarComentario(req, res) {
+function deletarTodosComentariosAlerta(req, res) {
     const idAlerta =  req.body.idAlerta
 
-    comentarioModel.deletarComentario(idAlerta).then(response => {
+    comentarioModel.deletarTodosComentariosAlerta(idAlerta).then(response => {
         res.status(200).json(response);
     }).catch(err =>
         console.log("Error controller")
     )
 }
 
-module.exports = { getComentariosPorAlerta, addComentario, deletarComentario };
+function deletarComentarioId(req, res) {
+    const idComentario =  req.body.idComentario
+
+    comentarioModel.deletarComentarioId(idComentario).then(response => {
+        res.status(200).json(response);
+    }).catch(err =>
+        console.log("Error controller")
+    )
+}
+
+module.exports = { getComentariosPorAlerta, addComentario, deletarTodosComentariosAlerta, updateComentario, deletarComentarioId };
