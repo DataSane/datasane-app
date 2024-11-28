@@ -42,6 +42,51 @@ function apagarAlerta(idAlerta) {
 
 }
 
+function toggleModalDeleteComentario(idComentario, idAlerta) {
+    modalDelete.classList.toggle("visible")
+
+    modalDelete.innerHTML = `
+    <div class="modal-content align-top">
+            <div class="close-icon">
+                <i class="fa-solid fa-x" id="closeButton"></i>
+            </div>
+            <h2 style="text-align:center">Deseja mesmo apagar este comentário?</h2>
+            <div class="buttons-container">
+                <button id="buttonCancel" class="btn-container-style cancel">Cancelar</button>
+                <button onclick="apagarComentario(${idComentario}, ${idAlerta})" class="btn-container-style delete-button">Apagar</button>
+            </div>
+        </div>
+    `
+}
+
+function apagarComentario(idComentario, idAlerta) {
+    const comentarioList = document.querySelector("#comentarioListId")
+
+    fetch(`${actualIP}/api/comentarios/deletarComentarioId`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idComentario: idComentario
+        })
+    })
+        .then(async response => {
+            if (!response.ok) {
+                throw new Error('Error in getAlertas');
+            }
+            response.json().then(resposta => {
+                modalDelete.classList.toggle("visible")
+                comentarioList.innerHTML = '';
+                listarComentarios(idAlerta);
+            })
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+
+}
+
 modalDelete.addEventListener("click", (e) => {
     if (e.target.id == "modalDelete" || e.target.id == "closeButton" || e.target.id == "buttonCancel") {
         toggleModalDelete();

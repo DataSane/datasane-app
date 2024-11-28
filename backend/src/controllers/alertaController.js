@@ -52,7 +52,7 @@ function deletarAlerta(req, res) {
     const idAlerta =  req.body.idAlerta
 
     console.log(idAlerta);
-    comentarioModel.deletarComentario(idAlerta).then(resComentario => {
+    comentarioModel.deletarTodosComentariosAlerta(idAlerta).then(resComentario => {
         alertaModel.deletarAlerta(idAlerta).then(responseAlerta => {
             res.status(200).json(responseAlerta);
         })

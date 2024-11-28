@@ -44,7 +44,22 @@ function adicionarComentario(userId, idAlerta, comentario) {
     return database.execute(sqlCommand);
 }
 
-function deletarComentario(idAlerta) {
+function updateComentario(idComentario, comentario) {
+    console.log('Starting update Alerta with id');
+
+    var sqlCommand = `
+        UPDATE comentario SET mensagem = '${comentario}' WHERE idComentario = ${idComentario};
+    `;
+
+    // console.log("Running SQL Command " + sqlCommand);
+
+    // const resultQuery = await database.execute(sqlCommand);
+    // var resultToString = JSON.stringify(resultQuery);
+
+    return database.execute(sqlCommand);
+}
+
+function deletarTodosComentariosAlerta(idAlerta) {
     console.log('Starting delete Comentarios por alerta');
 
     var sqlCommand = `
@@ -59,5 +74,20 @@ function deletarComentario(idAlerta) {
     return database.execute(sqlCommand);
 }
 
+function deletarComentarioId(idComentario) {
+    console.log('Starting delete Comentarios por alerta');
 
-module.exports = { getComentariosPorAlerta, adicionarComentario, deletarComentario };
+    var sqlCommand = `
+        DELETE FROM comentario WHERE idComentario = ${idComentario};
+    `;
+
+    // console.log("Running SQL Command " + sqlCommand);
+
+    // const resultQuery = await database.execute(sqlCommand);
+    // var resultToString = JSON.stringify(resultQuery);
+
+    return database.execute(sqlCommand);
+}
+
+
+module.exports = { getComentariosPorAlerta, adicionarComentario, deletarTodosComentariosAlerta, updateComentario, deletarComentarioId };
