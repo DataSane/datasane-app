@@ -221,15 +221,18 @@ body{
 }
 .logout-container a{
     text-decoration: none;
-    color: #f13939;
+    background-color: #f13939;
+    color: #fff;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-weight: bolder;
     font-size: 13px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-bottom: 20px;
 }
 
  a.alerta-item{
