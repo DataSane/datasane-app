@@ -7,7 +7,9 @@ router.get('/', async function(req, res) {
 
         res.render('dashboard', {
             userid: req.session.user.session_userid,
-            isadmin: req.session.user.session_isadmin
+            isadmin: req.session.user.session_isadmin,
+            username: req.session.user.session_username
+
         });
 
     }else{

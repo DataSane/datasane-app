@@ -7,7 +7,8 @@ router.get('/', async function(req, res) {
 
         res.render('municipios', {
             userid: req.session.user.session_userid,
-            isadmin: req.session.user.session_isadmin
+            isadmin: req.session.user.session_isadmin,
+            username: req.session.user.session_username
         });
 
     }else{
@@ -23,7 +24,8 @@ router.get('/mapa', async function(req, res) {
 
         res.render('mapa', {
             userid: req.session.user.session_userid,
-            isadmin: req.session.user.session_isadmin
+            isadmin: req.session.user.session_isadmin,
+            username: req.session.user.session_username
         });
 
     }else{
@@ -40,7 +42,8 @@ router.get('/comparativa', async function(req, res) {
 
         res.render('comparativa', {
             userid: req.session.user.session_userid,
-            isadmin: req.session.user.session_isadmin
+            isadmin: req.session.user.session_isadmin,
+            username: req.session.user.session_username
         });
 
     }else{
@@ -70,7 +73,8 @@ router.get('/comparativa/resultados', async function(req, res) {
         userid: req.session.user.session_userid,
         isadmin: req.session.user.session_isadmin,
         municipio1Id: id1,
-        municipio2Id: id2
+        municipio2Id: id2,
+        username: req.session.user.session_username
     });
 });
 
