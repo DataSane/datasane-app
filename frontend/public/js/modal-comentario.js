@@ -48,7 +48,7 @@ async function listarComentarios(idAlerta) {
                 <div class="comentario-container ${element.UserId == user.session_userid ? 'comentario-right' : ''}">
                         <div class="header-container"> 
                             <div class="header-comentario">
-                                <div class="icon-profile"></div>
+                                <!-- <div class="icon-profile"></div> -->
                                 <div class="header-title">
                                     <p>${element.Admin == 1 ? 'Secretário' : 'Analista'}</p>
                                     <h3>${element.Usuario}</h3>

@@ -10,7 +10,8 @@ router.get('/', async function(req, res) {
         res.render('alertas', {
             userid: req.session.user.session_userid,
             isadmin: req.session.user.session_isadmin,
-            visible: visible
+            visible: visible,
+            username: req.session.user.session_username
         });
 
     }else{
