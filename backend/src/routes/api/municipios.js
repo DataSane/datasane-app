@@ -3,14 +3,33 @@ const router = express.Router();
 const municipiosController = require('../../controllers/municipiosController');
 
 router.get('/', async (req, res) => {
-    var municipios = await municipiosController.getMunicipios(req, res);
+    const porteMunicipio = req.query.porteSelecionado;
+    var municipios = await municipiosController.getMunicipios(porteMunicipio);
 
     res.json(JSON.parse(municipios));
 });
 
+router.get('/filters', async (req, res) => {
+    try {
+        const categoriaSaneamento = req.query.categoriaSaneamento;
+        const porteMunicipio = req.query.porteSelecionado;
+        const menosOuMaisAfetado = req.query.menosOuMaisAfetados;
+
+        const filtered = await municipiosController.getMunicipiosFiltered(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado);
+
+        if (filtered) {
+            res.json(filtered);
+        } else {
+            res.status(404).json({ error: 'Nenhum município encontrado' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: 'Erro ao filtrar os municípios' });
+    }
+});
+
 router.get('/:id', async (req, res) => {
     try {
-        const id = req.params.id; 
+        const id = req.params.id;
         const municipio = await municipiosController.getMunicipioById(id);
 
         if (municipio) {

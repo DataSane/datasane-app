@@ -184,26 +184,28 @@
                 <p>Saneamento Básico dos Municipios de São Paulo</p>
                 <div class="filtro-container">
                     <label for="">Categoria:</label>
-                    <select name="" id="">
-                        <option value="">Abastecimento de água</option>
-                        <option value="">Tratamento de esgoto</option>
-                        <option value="">Coleta de lixo</option>
+                    <select id="selectCategoria">
+                        <option value="semFiltro_value">Sem Filtro</option>
+                        <option value="agua_value">Abastecimento de água</option>
+                        <option value="esgoto_value">Tratamento de esgoto</option>
+                        <option value="lixo_value">Coleta de lixo</option>
                     </select>
                 </div>
                 <div class="filtro-container">
                     <label for="">Ordenar por:</label>
-                    <select name="" id="">
-                        <option value="">Menos afetado</option>
-                        <option value="">Mais afetado</option>
+                    <select id="selectMenosOuMais">
+                        <option value="semFiltro_value">Sem Filtro</option>
+                        <option value="menosAfetado_value">Menos afetado</option>
+                        <option value="maisAfetado_value">Mais afetado</option>
                     </select>
                 </div>
                 <div class="filtro-container">
                     <label for="">População:</label>
-                    <select name="" id="">
-                        <option value="">Todos</option>
-                        <option value="">0 a 50 mil</option>
-                        <option value="">50.001 a 200 mil</option>
-                        <option value="">200.001 a 12 milhões</option>
+                    <select id="selectPorteMunicipio">
+                        <option value="geral_value">Todos</option>
+                        <option value="pequeno_value">0 a 50 mil</option>
+                        <option value="medio_value">50.001 a 200 mil</option>
+                        <option value="grande_value">200.001 a 12 milhões</option>
                     </select>
                 </div>
             </div>
