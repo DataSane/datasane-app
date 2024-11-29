@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const params = semFiltro ? new URLSearchParams({porteSelecionado: porteMunicipio}) : new URLSearchParams({categoriaSaneamento: categoriaSaneamento, porteSelecionado: porteMunicipio, menosOuMaisAfetados: menosOuMaisAfetado});
 
             const filtersUrl = "/api/municipios/filters";
+            const withoutFiltersUrl = "/api/municipios/withoutFilters";
             const reqUrl = semFiltro ? `${municipiosEndpoint}?${params.toString()}` : `${filtersUrl}?${params.toString()}`;
 
             console.log(reqUrl);
