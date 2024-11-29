@@ -3,7 +3,8 @@ const router = express.Router();
 const municipiosController = require('../../controllers/municipiosController');
 
 router.get('/', async (req, res) => {
-    var municipios = await municipiosController.getMunicipios(req, res);
+    const porteMunicipio = req.query.porteSelecionado;
+    var municipios = await municipiosController.getMunicipios(porteMunicipio);
 
     res.json(JSON.parse(municipios));
 });

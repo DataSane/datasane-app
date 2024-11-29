@@ -28,13 +28,13 @@ function verificarCategoria(categoriaSaneamento) {
 
 function verificarPorteMunicipio(porteMunicipio) {
     if (porteMunicipio == "geral") {
-        porteMunicipio = 1;
+        return 1;
     } else if (porteMunicipio == "pequeno") {
-        porteMunicipio = 2;
+        return 2;
     } else if (porteMunicipio == "medio") {
-        porteMunicipio = 3;
+        return 3;
     } else if (porteMunicipio == "grande") {
-        porteMunicipio = 4;
+        return 4;
     } else {
         console.error('Invalid porteMunicipio. Please use "geral", "pequeno", "medio" or "grande".');
         return;
@@ -43,27 +43,27 @@ function verificarPorteMunicipio(porteMunicipio) {
 
 function verificarMenosOuMaisAfetados(menosOuMaisAfetado) {
     if (menosOuMaisAfetado == "maisAfetado") {
-        menosOuMaisAfetado = "DESC";
+        return "DESC";
     } else if (menosOuMaisAfetado == "menosAfetado") {
-        menosOuMaisAfetado = "";
+        return "";
     } else {
         console.error('Invalid menosOuMaisAfetado. Please use "maisAfetado" or "menosAfetado".');
         return;
     }
 }
-    
+
 async function filteredMunicipios(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
     console.log('Starting catch municipios filtered');
 
     verificarCategoria(categoriaSaneamento);
-    verificarPorteMunicipio(porteMunicipio);
-    verificarMenosOuMaisAfetados(menosOuMaisAfetado);
+    let porteMunicipioResponse = verificarPorteMunicipio(porteMunicipio);
+    let menosOuMaisAfetadoResponse = verificarMenosOuMaisAfetados(menosOuMaisAfetado);
 
     var sqlCommand = `
         SELECT m.*,
         (m.${atributoMunicipio} / t.${atributoTipoMunicipio}) as razao
         FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} AND m.${atributoMunicipio} > 0.00 ORDER BY razao ${menosOuMaisAfetado} LIMIT 2;
+        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipioResponse} AND m.${atributoMunicipio} > 0.00 ORDER BY razao ${menosOuMaisAfetadoResponse};
     `;
 
     console.log(sqlCommand);
@@ -71,11 +71,14 @@ async function filteredMunicipios(categoriaSaneamento, porteMunicipio, menosOuMa
     return await database.execute(sqlCommand);
 }
 
-async function municipios() {
+async function municipios(porteMunicipio) {
     console.log('Starting catch Municipio');
 
+    let porteMunicipioResponse = await verificarPorteMunicipio(porteMunicipio);
+
     var sqlCommand = `
-            SELECT * FROM municipio;
+            SELECT m.* FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
+            ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipioResponse};
         `;
 
     console.log("Running SQL Command " + sqlCommand);

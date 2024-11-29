@@ -10,34 +10,64 @@ document.addEventListener('DOMContentLoaded', function () {
     let categoriaSaneamento;
     let porteMunicipio;
     let menosOuMaisAfetado;
-    let categoriaIsEmpty;
-    let menosOuMaisAfetadoIsEmpty;
     let categoriaSaneamentoMunicipio;
+    let semFiltro;
 
-    // verificarCategoria();
-    // verificarMenosOuMaisAfetados();
-    // verificarPorteMunicipio();
-    // fetchMunicipios();
     verficarValores();
 
+    function verficarValores() {
+        let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
+        let categoriaSelecionada = selectCategoria.value;
+        console.log(menosOuMaisSelecionado, categoriaSelecionada)
+
+        semFiltro = false;
+
+        if (categoriaSelecionada == 'semFiltro_value' && menosOuMaisSelecionado == 'semFiltro_value') {
+            semFiltro = true;
+        } else if (categoriaSelecionada == 'semFiltro_value') {
+            categoriaSelecionada = 'agua_value';
+            selectCategoria.value = 'agua_value';
+        } else if (menosOuMaisSelecionado == 'semFiltro_value') {
+            menosOuMaisSelecionado = 'menosAfetado_value';
+            selectMenosOuMaisSelecionado.value = 'menosAfetado_value';
+        }
+
+
+        verificarCategoria(categoriaSelecionada);
+        verificarMenosOuMaisAfetados(menosOuMaisSelecionado);
+        verificarPorteMunicipio();
+        plotMunicipios();
+    }
+    
+    selectCategoria.addEventListener("change", function () {
+        verficarValores();
+    });
+
+    selectPorteMunicipio.addEventListener("change", function () {
+        verficarValores();
+    });
+
+    selectMenosOuMaisSelecionado.addEventListener("change", function () {
+        verficarValores();
+    });
 
     function verificarCategoria(categoriaSelecionada) {
-            if (categoriaSelecionada == "agua_value") {
-                categoriaSaneamento = "semAgua";
-                categoriaSaneamentoMunicipio = "populacaoSemAgua";
-                coberturaChart = "Água";
-            } else if (categoriaSelecionada == "esgoto_value") {
-                categoriaSaneamento = "semEsgoto";
-                categoriaSaneamentoMunicipio = "populacaoSemEsgoto";
-                coberturaChart = "Tratamento de Esgoto";
-            } else if (categoriaSelecionada == "lixo_value") {
-                categoriaSaneamento = "semLixo";
-                categoriaSaneamentoMunicipio = "populacaoSemLixo";
-                coberturaChart = "Coleta de Lixo";
-            } else {
-                console.error('Invalid categoriaSaneamento. Please use "semLixo", "semAgua", "populacaoSemEsgoto" or "inundacao".');
-                return;
-            }
+        if (categoriaSelecionada == "agua_value") {
+            categoriaSaneamento = "semAgua";
+            categoriaSaneamentoMunicipio = "populacaoSemAgua";
+            coberturaChart = "Água";
+        } else if (categoriaSelecionada == "esgoto_value") {
+            categoriaSaneamento = "semEsgoto";
+            categoriaSaneamentoMunicipio = "populacaoSemEsgoto";
+            coberturaChart = "Tratamento de Esgoto";
+        } else if (categoriaSelecionada == "lixo_value") {
+            categoriaSaneamento = "semLixo";
+            categoriaSaneamentoMunicipio = "populacaoSemLixo";
+            coberturaChart = "Coleta de Lixo";
+        } else {
+            console.error('Invalid categoriaSaneamento. Please use "semLixo", "semAgua", "populacaoSemEsgoto" or "inundacao".');
+            return;
+        }
 
         console.log("Categoria: " + categoriaSaneamento, categoriaSaneamentoMunicipio);
     }
@@ -61,76 +91,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function verificarMenosOuMaisAfetados(menosOuMaisSelecionado) {
-        // let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
-        // console.log("Menos ou mais selecionado: " + menosOuMaisSele);
-        
         if (menosOuMaisSelecionado == "maisAfetado_value") {
             menosOuMaisAfetado = "maisAfetado";
         } else if (menosOuMaisSelecionado == "menosAfetado_value") {
             menosOuMaisAfetado = "menosAfetado";
-        }  else {
+        } else {
             menosOuMaisAfetado = undefined;
         }
-
-        // if (menosOuMaisSelecionado == "maisAfetado_value") {
-        //     menosOuMaisAfetado = "maisAfetado";
-        // } else if (menosOuMaisSelecionado == "menosAfetado_value") {
-        //     menosOuMaisAfetado = "menosAfetado";
-        // } else if (menosOuMaisSelecionado == "semFiltro_value") {
-        //     menosOuMaisAfetadoIsEmpty = true;
-        //     // menosOuMaisAfetado = "maisAfetado";
-        // } else {
-        //     menosOuMaisAfetados = undefined;
-        // }
 
         console.log("Menos ou Mais Afetado: " + menosOuMaisAfetado);
     }
 
-    selectCategoria.addEventListener("change", function () {
-        verficarValores();
-    });
-
-    selectPorteMunicipio.addEventListener("change", function () {
-        verficarValores();
-    });
-
-    selectMenosOuMaisSelecionado.addEventListener("change", function () {
-        verficarValores();
-    });
-
-    function verficarValores(){
-        let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
-        let categoriaSelecionada = selectCategoria.value;
-        console.log(menosOuMaisSelecionado, categoriaSelecionada)
-        
-        if (categoriaSelecionada == 'semFiltro_value' && menosOuMaisSelecionado == 'semFiltro_value') {
-            console.log("Filtros vazios")
-            return;
-        } else if (categoriaSelecionada == 'semFiltro_value') {
-            categoriaSelecionada = 'agua_value'
-            selectCategoria.value = 'agua_value'
-        } else if (menosOuMaisSelecionado == 'semFiltro_value') {
-            menosOuMaisSelecionado = 'menosAfetado_value'
-            selectMenosOuMaisSelecionado.value = 'menosAfetado_value'
-        }
-
-    
-        verificarCategoria(categoriaSelecionada);
-        verificarMenosOuMaisAfetados(menosOuMaisSelecionado);
-        verificarPorteMunicipio();
-        fetchMunicipios();
-    }
-
     async function fetchMunicipios() {
         try {
-            const params = new URLSearchParams({
-                categoriaSaneamento: categoriaSaneamento,
-                porteSelecionado: porteMunicipio,
-                menosOuMaisAfetados: menosOuMaisAfetado
-            });
+
+            
+            const params = semFiltro ? new URLSearchParams({porteSelecionado: porteMunicipio}) : new URLSearchParams({categoriaSaneamento: categoriaSaneamento, porteSelecionado: porteMunicipio, menosOuMaisAfetados: menosOuMaisAfetado});
 
             const filtersUrl = "/api/municipios/filters";
-            const reqUrl = `${filtersUrl}?${params.toString()}`;
+            const reqUrl = semFiltro ? `${municipiosEndpoint}?${params.toString()}` : `${filtersUrl}?${params.toString()}`;
 
             console.log(reqUrl);
 
@@ -153,7 +132,9 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('entrando plotMunicipios');
 
         try {
-            const tableBody = document.getElementById('table-body');
+            let tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = ""; 
+
             const municipios = await fetchMunicipios();
 
             municipios.forEach(municipio => {

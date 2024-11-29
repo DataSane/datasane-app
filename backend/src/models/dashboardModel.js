@@ -44,7 +44,7 @@ async function municipiosMaisCriticos(categoriaSaneamento, porteMunicipio, menos
         SELECT m.*,
         (m.${atributoMunicipio} / t.${atributoTipoMunicipio}) as razao
         FROM municipio as m JOIN agrupamentoMunicipios as a ON a.fkMunicipio = m.idMunicipio JOIN tipoMunicipio as t 
-        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} AND m.${atributoMunicipio} > 0.00 ORDER BY razao ${menosOuMaisAfetado}
+        ON a.fkTipoMunicipio = t.idTipoMunicipio WHERE t.idTipoMunicipio = ${porteMunicipio} AND m.${atributoMunicipio} > 0.9 ORDER BY razao ${menosOuMaisAfetado}
         LIMIT 5;
     `;
 

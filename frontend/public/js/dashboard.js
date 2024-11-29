@@ -166,6 +166,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     x: {
                         beginAtZero: true,
+                        min: 0,
+                        max: 100,
                         display: true,
                         title: {
                             display: true,
@@ -175,6 +177,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             font: {
                                 family: 'Montserrat, Arial, Helvetica, sans-serif',
                                 size: 14
+                            },
+                            callback: function(value) {
+                                return value + '%'; // Adiciona o símbolo de porcentagem aos rótulos
                             }
                         }
                     }
@@ -187,19 +192,19 @@ document.addEventListener('DOMContentLoaded', function () {
                             generateLabels: function (chart) {
                                 return [
                                     {
-                                        text: 'Abaixo do limite',
+                                        text: 'Acima do limite',
                                         fillStyle: 'rgb(241, 57, 57)',
                                         strokeStyle: 'rgb(241, 57, 57)',
                                         lineWidth: 2
                                     },
                                     {
-                                        text: 'Acima do limite',
+                                        text: 'Dentro do limite',
                                         fillStyle: 'rgb(6, 204, 57)',
                                         strokeStyle: 'rgb(6, 204, 57)',
                                         lineWidth: 2
                                     },
                                     {
-                                        text: 'Meta Marco Legal',
+                                        text: 'Meta Marco Legal (2033)',
                                         fillStyle: 'rgb(255, 106, 0)',
                                         strokeStyle: 'rgb(255, 106, 0)',
                                         lineWidth: 2

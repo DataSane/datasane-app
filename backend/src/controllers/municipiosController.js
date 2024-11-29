@@ -1,8 +1,8 @@
 var municipiosModel = require('../models/municipiosModel');
 
-async function getMunicipios(req, res) {
+async function getMunicipios(porteMunicipio) {
     try {
-        const municipios = await municipiosModel.municipios(); // Pela quantidade de dados, necessário utilização de await e async
+        const municipios = await municipiosModel.municipios(porteMunicipio); // Pela quantidade de dados, necessário utilização de await e async
         return municipios;
     } catch (err) {
         console.error('Error trying to catch Municípios:', err);
