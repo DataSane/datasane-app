@@ -52,7 +52,31 @@ document.addEventListener('DOMContentLoaded', function () {
             coberturaChart = "Coleta de Lixo";
         }
     }
-
+    
+    function verificarPorteMunicipio() {
+        let porteSelecionado = selectPorteMunicipio.value;
+        
+        if (porteSelecionado == "grande_value") {
+            porteMunicipio = "grande";
+        } else if (porteSelecionado == "medio_value") {
+            porteMunicipio = "medio";
+        } else if (porteSelecionado == "pequeno_value") {
+            porteMunicipio = "pequeno";
+        } else {
+            porteMunicipio = "geral";
+        }
+    }
+    
+    function verificarMenosOuMaisAfetados() {
+        let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
+        
+        if (menosOuMaisSelecionado == "maisAfetado_value") {
+            menosOuMaisAfetado = "maisAfetado";
+        } else {
+            menosOuMaisAfetado = "menosAfetado";
+        }
+    }
+    
     selectCategoria.addEventListener("change", function () {
         verificarCategoria();
         atualizarDadosGraficoMarcoLegal();
@@ -67,31 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
         verificarMenosOuMaisAfetados();
         atualizarDadosGraficoMarcoLegal();
     });
-    
-    function verificarPorteMunicipio() {
-        let porteSelecionado = selectPorteMunicipio.value;
-
-        if (porteSelecionado == "grande_value") {
-            porteMunicipio = "grande";
-        } else if (porteSelecionado == "medio_value") {
-            porteMunicipio = "medio";
-        } else if (porteSelecionado == "pequeno_value") {
-            porteMunicipio = "pequeno";
-        } else {
-            porteMunicipio = "geral";
-        }
-    }
-
-    function verificarMenosOuMaisAfetados() {
-        let menosOuMaisSelecionado = selectMenosOuMaisSelecionado.value;
-
-        if (menosOuMaisSelecionado == "maisAfetado_value") {
-            menosOuMaisAfetado = "maisAfetado";
-        } else {
-            menosOuMaisAfetado = "menosAfetado";
-        }
-    }
-
 
     async function getMaisCriticos() {
         const response = await fetch(url, {

@@ -10,8 +10,13 @@ async function getMunicipios(req, res) {
     }
 }
 
+async function getMunicipiosFiltered(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
+    const filteredMunicipios = await municipiosModel.filteredMunicipios(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado);
+    return filteredMunicipios;
+}
+
 async function getMunicipioById(id){
     const municipio = await municipiosModel.findMunicipioById(id);
     return municipio;
 }
-module.exports = { getMunicipios, getMunicipioById };
+module.exports = { getMunicipios, getMunicipiosFiltered, getMunicipioById };
