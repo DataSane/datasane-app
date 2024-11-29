@@ -52,6 +52,22 @@ function verificarMenosOuMaisAfetados(menosOuMaisAfetado) {
     }
 }
 
+async function municipios() {
+    console.log('Starting catch Municipio');
+
+
+    var sqlCommand = `
+        SELECT * FROM municipio;
+    `;
+
+    console.log("Running SQL Command " + sqlCommand);
+
+    const resultQuery = await database.execute(sqlCommand);
+    var resultToString = JSON.stringify(resultQuery);
+
+    return resultToString;
+}
+
 async function filteredMunicipios(categoriaSaneamento, porteMunicipio, menosOuMaisAfetado) {
     console.log('Starting catch municipios filtered');
 
@@ -71,7 +87,7 @@ async function filteredMunicipios(categoriaSaneamento, porteMunicipio, menosOuMa
     return await database.execute(sqlCommand);
 }
 
-async function municipios(porteMunicipio) {
+async function municipiosWithoutFilters(porteMunicipio) {
     console.log('Starting catch Municipio');
 
     let porteMunicipioResponse = await verificarPorteMunicipio(porteMunicipio);
@@ -110,4 +126,4 @@ async function findMunicipioById(id) {
     }
 }
 
-module.exports = { municipios, filteredMunicipios, findMunicipioById };
+module.exports = { municipios, municipiosWithoutFilters, filteredMunicipios, findMunicipioById };
