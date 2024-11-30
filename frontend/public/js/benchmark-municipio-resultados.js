@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const municipio1Data = await fetchMunicipioData(window.municipio1Id);
             const municipio2Data = await fetchMunicipioData(window.municipio2Id);
 
-            titleComparative.innerHTML = `Comparativo da falta de Cobertura de Abastecimento de Água, Tratamento de Esgoto, Coleta de Lixo e Vulnerabilidade à Inundação entre ${municipio1Data.nome} e ${municipio2Data.nome}`
+            titleComparative.innerHTML = `Comparativo da Cobertura de Abastecimento de Água, Tratamento de Esgoto, Coleta de Lixo e Vulnerabilidade à Inundação por População entre ${municipio1Data.nome} e ${municipio2Data.nome}`
 
             console.log(municipio1Data, municipio2Data)
 
