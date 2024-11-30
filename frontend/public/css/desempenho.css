@@ -110,7 +110,7 @@
 .table-container > .footer-table-container > button{
     padding: 10px 20px;
     background-color: rgba(0, 173, 237, 1);
-    border-radius: 20px;
+    border-radius: 10px;
     color: #fff;
     cursor: pointer;
     transition: 0.3s all;

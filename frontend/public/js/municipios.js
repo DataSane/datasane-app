@@ -182,4 +182,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    
 });
+
+function downloadRelatorio() {
+   var table = document.getElementById('tableRelatorio');  // Substitua 'myTable' pelo id da sua tabela
+   // Converter tabela HTML para planilha Excel
+   var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
+   
+   // Baixar a planilha como arquivo Excel
+   XLSX.writeFile(wb, 'Relatorio.xlsx');
+}
