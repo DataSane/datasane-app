@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
         verficarValores();
     });
 
+    clearFiltroButton.addEventListener("onclick", () => {
+        selectCategoria.value = 'semFiltro_value'
+        selectMenosOuMaisSelecionado.value = 'semFiltro_value'
+        selectPorteMunicipio.value = 'geral_value'
+    })
+
     function verificarCategoria(categoriaSelecionada) {
         if (categoriaSelecionada == "agua_value") {
             categoriaSaneamento = "semAgua";
