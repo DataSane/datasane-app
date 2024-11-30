@@ -52,7 +52,7 @@
 
 #grafico1{
     width: 100% !important;
-    height: 80% !important;
+    /* height: 80% !important; */
 }
 
 #graficoPizza1,
@@ -81,6 +81,7 @@
 p{
     text-align: center;
     font-size: 14px;
+    padding: 0px 5px;
     font-family: 'montserrat', Arial, Helvetica, sans-serif;
 }
 
@@ -108,7 +109,7 @@ p{
     font-size: 40px;
 }
 .title-grafico1{
-    padding: 10px 0px;
+    padding: 10px 5px;
     font-size: 20px;
     font-family: 'montserrat', Arial, Helvetica, sans-serif;
 }

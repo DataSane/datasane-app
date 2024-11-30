@@ -179,7 +179,7 @@
         <div class="section-dashboard-content">
             <div class="Graficos">
                 <div class="Grafico1">
-                    <p class="title-grafico1">Índice de Saneamento: Comparativo Municipal de SP</p>
+                    <p class="title-grafico1">Cobertura de Saneamento Básico por Município: Proporção de Moradores Sem Atendimento em Comparação com o Limite Aceitável Definido para 2033 </p>
                     <div class="filter-container">
                         <div class="filter-content">
                             <label>Categoria</label>
@@ -211,27 +211,27 @@
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza1">
-                        <p>Distribuição de múnicipios por cobertura de Abastecimento de água</p>
+                        <p>Distribuição de Municípios por Cobertura de Abastecimento de Água com Base no Censo de 2022 do SINIS (90,9%) </p>
                         <canvas id="graficoPizza1"></canvas>
                     </div>
                     <div class="GraficoPizza2">
-                        <p>Distribuição de múnicipios por cobertura de Tratamento de esgoto</p>
+                        <p>Distribuição de Municípios por Cobertura de Tratamento de Esgoto com Base no Censo de 2022 do SINIS (95,7%)</p>
                         <canvas id="graficoPizza2"></canvas>
                     </div>
                 </div>
                 <div class="AreaGraficoPizza">
                     <div class="GraficoPizza3">
-                        <p>Distribuição de múnicipios por cobertura de Coleta de lixo</p>
+                        <p>Distribuição de Municípios por Cobertura de Coleta de Lixo com Base no Censo de 2022 do SINIS (80,9%)</p>
                         <canvas id="graficoPizza3"></canvas>
                     </div>
                     <div class="GraficoPizza4">
-                        <p>Distribuição de múnicipios por Chance de inundação</p>
+                        <p>Distribuição de Municípios por Chance de Inundação com Base no Censo de 2022 do SINIS (86,8%)</p>
                         <canvas id="graficoPizza4"></canvas>
                     </div>
                 </div>
             </div>
             <div class="grafico-linha-container">
-                <p class="title-grafico1">Cobertura de saneamento básico no Sudeste do Brasil nos últimos 4 anos</p>
+                <p class="title-grafico1">Evolução da Cobertura de Saneamento Básico no Sudeste do Brasil (2019-2022) com Dados do SINIS e Censo </p>
                 <canvas id="lineGrafico"></canvas>
             </div>
 
@@ -248,27 +248,27 @@
                     labels: ["2019", "2020", "2021", "2022"],
                     datasets: [{
                         label: 'Agua',
-                        data: [65, 59, 80, 81],
+                        data: [91.1, 91.3, 91.5, 90.9],
                         fill: false,
-                        borderWidth: 2,
-                        borderColor: 'rgb(6, 204, 57)',
-                        backgroundColor: 'rgb(6, 204, 57)'
+                        borderWidth: 4,
+                        borderColor: 'rgb(15, 80, 150)',
+                        backgroundColor: 'rgb(15, 80, 150)'
                     },
                     {
                         label: 'Esgoto',
-                        data: [89, 93, 76, 22],
+                        data: [79.5, 80.5, 81.7, 80.9],
                         fill: false,
-                        borderWidth: 2,
-                        borderColor: 'rgb(98, 55, 192)',
-                        backgroundColor: 'rgb(98, 55, 192)'
+                        borderWidth: 4,
+                        borderColor: 'rgb(140, 110, 85)',
+                        backgroundColor: 'rgb(140, 110, 85)'
                     },
                     {
                         label: 'Coleta de Lixo',
-                        data: [75, 78, 85, 50],
+                        data: [96.2, 96.1, 95.8, 95.7],
                         fill: false,
-                        borderWidth: 2,
-                        borderColor: 'rgb(22, 55, 192)',
-                        backgroundColor: 'rgb(22, 55, 192)'
+                        borderWidth: 4,
+                        borderColor: 'rgb(255, 140, 0)',
+                        backgroundColor: 'rgb(255, 140, 0)'
                     },
                     ]
                 },
@@ -277,11 +277,18 @@
                     maintainAspectRatio: false,
                     scales: {
                         y: {
+                            beginAtZero: true,
+                        min: 0,
+                        max: 100, // Limita o eixo Y a 100
+                        suggestedMax: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';  // Formata os valores como porcentagem
+                            },
+                            stepSize: 10, // Define o intervalo de marcação no eixo Y
                             min: 0,
                             max: 100,
-                            ticks: {
-                                stepSize: 10
-                            }
+                        },
                         }
                     },
                     plugins: {

@@ -14,7 +14,6 @@
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
     <script src="/js/open-analista-iframe.js" defer></script>
-    <script src="/js/municipios.js" defer></script>
 
     <!-- styles -->
     <link rel="stylesheet" href="/css/global-style.css">
@@ -170,7 +169,7 @@
         <header class="header-dashboard">
             <div class="inner-header">
                 <h1>Relatório</h1>
-                <a href="/monitor">/download</a>
+                <!-- <a href="/monitor">/download</a> -->
             </div>
         </header>
         <!--   <section class="search-container">
@@ -180,8 +179,9 @@
             </div> 
         </section>-->
         <section class="table-container">
+            <p>Relatório de Saneamento Básico dos Municípios de São Paulo</p>
             <div class="Comeco-table-container">
-                <p>Saneamento Básico dos Municipios de São Paulo</p>
+                <p>Filtros:</p>
                 <div class="filtro-container">
                     <label for="">Categoria:</label>
                     <select id="selectCategoria">
@@ -208,9 +208,10 @@
                         <option value="grande_value">200.001 a 12 milhões</option>
                     </select>
                 </div>
+                <a id="clearFiltroButton" href="">Limpar filtros</a>
             </div>
             <div class="main-table-container">
-                <table>
+                <table id="tableRelatorio">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -229,7 +230,7 @@
                 </table>
             </div>
             <div class="footer-table-container">
-                <button id="openModalAdicionarAnalista">Baixar Relatório</button>
+                <button onclick="downloadRelatorio()" id="downloadTableButton">Baixar Relatório</button>
             </div>
         </section>
         <div id="modalAdicionarAnalista" class="modal">
@@ -244,5 +245,8 @@
 </body>
 
 </html>
+<script src="/js/municipios.js" defer></script>
 
 <script src="https://kit.fontawesome.com/d94da5d75d.js" crossorigin="anonymous"></script>
+<!-- Para gerar arquivo xls -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
