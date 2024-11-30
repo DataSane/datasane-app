@@ -10,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
     <!-- estático js script -->
     <script src="/js/side-bar.js" defer></script>
@@ -168,7 +171,7 @@
         
         <section class="content-container-grafico">
             <div class="grafico">
-                <h1 class="title-chartj-comparative">Comparação de Serviços Básicos entre Municípios</h1>
+                <h1 id="title-comparative" class="title-chartj-comparative"></h1>
                 <canvas class="comparativeChart" id="comparativeChart"></canvas>
             </div>
         </section>
